@@ -65,6 +65,11 @@ export default function StuckPanel() {
         {t && (
           <div style={{ fontSize: 13, color: 'var(--t2)' }}>
             {t.attempts.toLocaleString('pt-BR')} tentativas de {t.students} aluno(s) · {t.fails} reprovações · {t.skips} pulos · {t.exits} saídas no meio · {t.asrErrors} falhas do reconhecimento · {t.micBlocked} microfone bloqueado
+            {(t.graded > 0 || t.retries > 0) && (
+              <div style={{ marginTop: 4 }}>
+                Corretor da fala: {t.graderSaved} aprovada(s) que o antigo reprovaria · {t.graderLost} reprovada(s) que o antigo aprovaria · {t.retries} pedido(s) de &quot;fale de novo&quot;
+              </div>
+            )}
           </div>
         )}
         {data && data.alerts.length > 0 && (

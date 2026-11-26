@@ -36,6 +36,13 @@ export async function POST(req: NextRequest) {
   const html = base([
     h1('Onde os alunos travaram'),
     p(`Últimas ${days === 1 ? '24 horas' : `${days} dias`}: ${t.attempts} tentativas de ${t.students} aluno(s), ${t.fails} reprovações, ${t.skips} pulos e ${t.exits} saídas no meio.`),
+    // Corretor novo da fala: o que ele salvou (aprovou e o antigo reprovaria) e os pedidos de "fale de novo".
+    t.graded || t.retries
+      ? p(`<strong>Corretor da fala</strong><br>${t.graderSaved} tentativa(s) aprovada(s) que o corretor antigo reprovaria, ${t.graderLost} reprovada(s) que ele aprovaria e ${t.retries} pedido(s) de "fale de novo" (fala vazia ou cortada, sem contar como erro).`) +
+        (report.graderSaved.length
+          ? `<ul style="margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.6;color:#16131F;">${report.graderSaved.slice(0, 6).map(g => `<li style="margin-bottom:8px;">${esc(`"${g.expected}" — o app entendeu "${g.answer || '—'}"${g.count > 1 ? ` (${g.count} vezes)` : ''}`)}</li>`).join('')}</ul>`
+          : '')
+      : '',
     ...([
       ['Possível falha do app (conferir primeiro)', 'O aluno parece ter acertado e o corretor ou o reconhecimento de voz reprovou.', report.alertGroups.app],
       ['Conteúdo difícil', 'Parte grande dos alunos que fizeram o exercício errou de verdade. Avaliar se vale suavizar.', report.alertGroups.content],

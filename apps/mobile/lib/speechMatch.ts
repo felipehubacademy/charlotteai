@@ -41,6 +41,11 @@ const INFORMAL: Record<string, string> = {
   ok: 'okay', mr: 'mister', mrs: 'missus', dr: 'doctor', vs: 'versus',
   tv: 'tv', 'a.m.': 'am', 'p.m.': 'pm',
   alright: 'all right', everyday: 'every day', anymore: 'any more',
+  // Contração escrita sem apóstrofo pelo reconhecimento ("Im fine", "dont worry").
+  im: 'i am', whats: 'what is', thats: 'that is', youre: 'you are', theyre: 'they are', ive: 'i have',
+  dont: 'do not', didnt: 'did not', doesnt: 'does not', isnt: 'is not', arent: 'are not',
+  wasnt: 'was not', werent: 'were not', cant: 'cannot', couldnt: 'could not', wouldnt: 'would not',
+  shouldnt: 'should not', havent: 'have not', hasnt: 'has not',
 };
 
 // Grafia britânica → americana (o reconhecimento é americano).
@@ -114,7 +119,15 @@ function expandMore(t: string): string {
 const HOMOPHONES: Record<string, string> = { where: 'were', wear: 'were' };
 
 function normalizeWith(text: string, sTo: 'is' | 'has', dTo: 'would' | 'had'): string {
-  let t = text.toLowerCase().replace(/[‘’`´]/g, "'").replace(/[“”„]/g, '"');
+  let t = text.toLowerCase().replace(/[‘’`´]/g, "'").replace(/[“”„]/g, '"')
+    // Sem acento (o reconhecimento às vezes escreve "Brasil", "Felipé", "café").
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    // "Whatsup" / "wassup" / "What's up" = "what is up".
+    .replace(/\b(whatsup|whatsapp|wassup|whassup|whatup|wazzup)\b/g, 'what is up')
+    .replace(/\bwhat up\b/g, 'what is up')
+    // "30°" = "30 degrees"; "8pm" = "8 pm".
+    .replace(/\s?°\s?(?:[cf]\b)?/g, ' degrees ')
+    .replace(/(\d)\s?(am|pm)\b/g, '$1 $2');
   // Lacunas do tipo [X] / [role] não são faladas pelo aluno: saem da frase esperada.
   t = t.replace(/\[[^\]]*\]/g, ' ');
   t = expandMore(expandContractions(t, sTo, dTo))
@@ -161,6 +174,11 @@ function normalizeWith(text: string, sTo: 'is' | 'has', dTo: 'would' | 'had'): s
   }
   // Algarismos vizinhos viram um só (ex.: "5 5 5" depois da conversão → "555").
   return out.join(' ').replace(/(\d)\s+(?=\d)/g, '$1').trim();
+}
+
+/** As duas leituras das contrações ambíguas ('s = is/has, 'd = would/had), já normalizadas e sem repetição. */
+export function normalizeSpeechVariants(text: string): string[] {
+  return [...new Set([normalizeWith(text, 'is', 'would'), normalizeWith(text, 'has', 'had')])];
 }
 
 /** Minúsculas, sem pontuação e no mesmo formato dos dois lados (números, contrações, grafia). */

@@ -23,6 +23,7 @@ import { characterInfo } from '@/lib/characters';
 import { TrackHostReaction } from '@/components/trail/TrackHostReaction';
 import { systemIsPt } from '@/lib/systemLang';
 import { bestSpeechMatch, normalizeSpeech } from '@/lib/speechMatch';
+import { gradeSpeech, decideTake, SPEECH_PASS_PCT, MAX_SPEECH_RETRIES } from '@/lib/speechGrade';
 import { logAttempt } from '@/lib/learnAttempts';
 import { checkGrammarAnswer, repeatsPrompt } from '@/lib/grammarAnswer';
 import { ReportIssueButton } from '@/components/ui/ReportIssue';
@@ -455,6 +456,18 @@ export default function LearnSessionScreen() {
   const usedAsrRef = useRef(false);
   // Falhas seguidas na frase atual (zera ao trocar de frase).
   const stepFailsRef = useRef(0);
+  // Pedidos de "fale de novo" na frase atual (fala vazia ou cortada não reprova; depois de 2, conta como erro).
+  const stepRetriesRef = useRef(0);
+  // Microfone abre sozinho quando a frase termina de tocar (o aluno não precisa segurar o botão).
+  // Armado ao entrar na frase, no "Tentar de novo" e depois de um "fale de novo".
+  const autoArmRef = useRef(false);
+  // Dedo no botão: enquanto segura, quem para é o soltar (modo antigo, "segurar para falar").
+  const holdingRef = useRef(false);
+  const pressInAtRef = useRef(0);
+  const stopOnReleaseRef = useRef(false);
+  // Vigia do silêncio: para a gravação ~1,2 s depois que o aluno termina de falar.
+  const vadTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [micReady, setMicReady] = useState(false);
   // Microfone negado: mostra aviso com atalho para os Ajustes, em vez de o botão não fazer nada.
   const [micBlocked, setMicBlocked] = useState(false);
   // Microfone ainda não liberado: o botão vira "toque para liberar" e o toque só pede a permissão.
@@ -521,6 +534,8 @@ export default function LearnSessionScreen() {
   // WAV/PCM 16kHz mono — required by Azure Speech SDK (M4A causes NoMatch)
   const recorder = useAudioRecorder({
     ...RecordingPresets.HIGH_QUALITY,
+    // Nível do som durante a gravação: o app percebe quando o aluno terminou de falar e para sozinho.
+    isMeteringEnabled: true,
     ios: {
       extension: '.wav',
       outputFormat: 'lpcm' as any,
@@ -708,6 +723,8 @@ export default function LearnSessionScreen() {
     setPronStatus('loading_audio');
     setPronFeedback(null);
     stepFailsRef.current = 0;
+    stepRetriesRef.current = 0;
+    autoArmRef.current = ph.type === 'repeat';
     pronFeedbackAnim.setValue(0);
     setListenWriteAnswer('');
     setListenWriteCorrect(null);
@@ -879,7 +896,14 @@ export default function LearnSessionScreen() {
 
   // ── Pronunciation: play ────────────────────────────────────
   const handlePlayCharlotte = () => {
-    if (charlotteAudioUri) playPhrase(charlotteAudioUri);
+    if (!charlotteAudioUri) return;
+    // Gravando: cancela, toca a frase e o microfone abre de novo quando ela terminar.
+    if (recordingRef.current) {
+      autoArmRef.current = true;
+      cancelRecording().then(() => playPhrase(charlotteAudioUri));
+      return;
+    }
+    playPhrase(charlotteAudioUri);
   };
 
   // Ondas animadas no icone de speaker quando audio toca: alterna entre
@@ -910,6 +934,7 @@ export default function LearnSessionScreen() {
     pronFeedbackAnim.setValue(0);
     speechTranscriptRef.current = '';
     speechAltsRef.current = [];
+    autoArmRef.current = true;
     setPronStatus('listening');
   };
 
@@ -944,17 +969,24 @@ export default function LearnSessionScreen() {
     return out.slice(0, 6);
   };
 
-  // Corrige a tentativa (todas as leituras do reconhecimento) e mostra o resultado.
+  // Corrige a tentativa (todas as leituras do reconhecimento) e mostra o resultado (lib/speechGrade).
+  // Fala vazia ou cortada no meio pede "fale de novo" e reabre o microfone, sem reprovar; só depois de
+  // MAX_SPEECH_RETRIES pedidos na mesma frase conta como erro.
   const finishPronAttempt = (alts: string[], source: 'device' | 'server') => {
     if (!currentStep || currentStep.kind !== 'pronunciation') return;
     const phraseText = currentStep.phrase.text ?? '';
-    const m = alts.length ? bestSpeechMatch(alts, phraseText) : { percent: 0, missing: [], transcript: '' };
-    const pct = m.percent;
+    const g = gradeSpeech(alts, phraseText);
+    const pct = g.percent;
     // Sem a pontuação final da transcrição (senão a mensagem fica com 'thank you.".').
-    const transcript = (m.transcript ?? '').replace(/[.!?…]+\s*$/, '');
-    const missing = missingDisplay(phraseText, m.missing);
+    const transcript = (g.transcript ?? '').replace(/[.!?…]+\s*$/, '');
+    const missing = missingDisplay(phraseText, g.missing);
     const missLine = missing.length && transcript
       ? (isPortuguese ? ` Faltou: ${missing.join(', ')}.` : ` Missing: ${missing.join(', ')}.`) : '';
+    // O corretor de antes (para o relatório mostrar o que o novo salvou ou deixou de aprovar).
+    const legacy = alts.length ? bestSpeechMatch(alts, phraseText).percent : 0;
+    const legacyPassed = isNoviceLike
+      ? (legacy >= 70 || (isPreNovice && (legacy >= 50 || (stepFailsRef.current >= 1 && alts.length > 0))))
+      : legacy >= 85;
 
     // A frase é uma pergunta e o aluno RESPONDEU ("I'm fine", "Yes, I was") em vez de repetir: diz isso.
     const answered = /\?\s*["')]*\s*$/.test(phraseText.trim()) && !!transcript
@@ -963,33 +995,44 @@ export default function LearnSessionScreen() {
       ? `É para repetir a pergunta, não responder. Entendemos: "${transcript}". Ouça e diga a pergunta igual.`
       : `Repeat the question, don't answer it. We heard: "${transcript}". Listen and say the same question.`;
 
-    // Nada entendido: quase sempre o aluno soltou o botão cedo ou falou antes de o microfone ligar.
+    // Nada entendido (depois dos pedidos de "fale de novo"): microfone longe ou fala baixa demais.
     const noSpeechMsg = isPortuguese
-      ? 'Não ouvimos sua voz. Segure o botão, espere aparecer "Pode falar" e só solte depois de dizer a frase inteira.'
-      : 'We couldn\'t hear you. Hold the button, wait for "Speak now" and only let go after saying the whole phrase.';
+      ? 'Não ouvimos sua voz. Fale perto do celular quando o botão ficar vermelho, com a frase inteira.'
+      : "We couldn't hear you. Speak close to the phone when the button turns red, and say the whole phrase.";
+
+    // Novice: binário (acerto/erro) a partir de 70%. Inter/Advanced: passa com 80%, "quase" de 50% a 80%.
+    // Pré-Novice: aceita o oi sem o nome (ou só o nome) e aprova na 2ª tentativa em que algo foi ouvido.
+    const preNovicePass = isPreNovice && !g.empty && (pct >= 50 || stepFailsRef.current >= 1);
+    let outcome = decideTake(g, {
+      passPct: isNoviceLike ? 70 : SPEECH_PASS_PCT,
+      closePct: isNoviceLike ? null : 50,
+      retriesSoFar: answered ? MAX_SPEECH_RETRIES : stepRetriesRef.current,
+    });
+    if (preNovicePass && !g.negationMismatch) outcome = 'pass';
+
+    const logBase = { ...pronLogBase(), answer: transcript, alternatives: alts, score: pct, source,
+      errorCode: asrErrorRef.current, legacyScore: legacy, legacyPassed };
+
+    if (outcome === 'retry') {
+      stepRetriesRef.current += 1;
+      logAttempt(userId, { ...logBase, event: 'retry', passed: null, outcome: 'retry' });
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
+      showPronHint(g.empty
+        ? (isPortuguese ? 'Não ouvimos sua voz. Fale de novo: o microfone já vai abrir.' : "We couldn't hear you. Say it again: the mic will open.")
+        : (isPortuguese ? `Faltou o fim da frase. Diga a frase inteira de novo.` : 'The end of the phrase was missing. Say the whole phrase again.'));
+      autoArmRef.current = true;
+      setPronStatus('listening');
+      return;
+    }
 
     let feedback: NonNullable<PronFeedback>;
-    // Novice: binário (acerto/erro). Inter/Advanced: 3 estados.
-    // Pré-Novice: aceita o oi sem o nome (ou só o nome) e aprova na 2ª tentativa em que algo foi ouvido.
-    const preNovicePass = isPreNovice && (pct >= 50 || (stepFailsRef.current >= 1 && !!transcript));
-    if (isNoviceLike) {
-      if (pct >= 70 || preNovicePass) {
-        feedback = { state: 'correct', xp: 15, message: isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.' };
-        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-        soundEngine.play('answer_correct').catch(() => {});
-      } else {
-        feedback = { state: 'error', xp: 0, message: transcript
-          ? (answered ? answeredMsg : isPortuguese ? `Tente de novo. Entendemos: "${transcript}".${missLine}` : `Try again. We heard: "${transcript}".${missLine}`)
-          : noSpeechMsg };
-        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-        soundEngine.play('answer_wrong').catch(() => {});
-        setSessionErrors(prev => prev + 1);
-      }
-    } else if (pct >= 85) {
-      feedback = { state: 'correct', xp: 15, message: isPortuguese ? 'Perfeito! Ótima pronúncia.' : 'Perfect! Great pronunciation.' };
+    if (outcome === 'pass') {
+      feedback = { state: 'correct', xp: 15, message: isNoviceLike
+        ? (isPortuguese ? pickNoviceCorrectMessage(hostName) : 'Nice! Pronunciation ok.')
+        : (isPortuguese ? 'Perfeito! Ótima pronúncia.' : 'Perfect! Great pronunciation.') };
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       soundEngine.play('answer_correct').catch(() => {});
-    } else if (pct >= 50) {
+    } else if (outcome === 'close') {
       feedback = { state: 'close', xp: 8, message: answered ? answeredMsg : isPortuguese ? `Quase! Entendemos: "${transcript}".${missLine} Tente de novo.` : `Close! We heard: "${transcript}".${missLine} Try again.` };
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
     } else {
@@ -1002,18 +1045,18 @@ export default function LearnSessionScreen() {
     }
     if (feedback.state === 'correct') stepFailsRef.current = 0;
     else { stepFailsRef.current += 1; if (stepFailsRef.current >= 2) feedback.listenAgain = true; }
+    stepRetriesRef.current = 0;
     feedback.missing = missing;
     // v2: Novice binário (100/0), outros níveis score real. Map por stepIdx
     // garante que retry sobrescreve a tentativa anterior do mesmo step.
     if (isV2) {
       pronScoresRef.current.set(stepIdx,
-        isNoviceLike ? (feedback.state === 'correct' ? 100 : 0) : pct
+        isNoviceLike ? (feedback.state === 'correct' ? 100 : 0) : (feedback.state === 'correct' ? Math.max(pct, SPEECH_PASS_PCT) : Math.min(pct, SPEECH_PASS_PCT - 1))
       );
     }
     saveExercise({ level, moduleIndex, topicIndex, exerciseType: 'repeat', isCorrect: feedback.state === 'correct', xpEarned: feedback.xp,
       exerciseData: { question: phraseText, score: pct, userAnswer: transcript } });
-    logAttempt(userId, { ...pronLogBase(), answer: transcript, alternatives: alts, score: pct,
-      passed: feedback.state === 'correct', source, errorCode: asrErrorRef.current });
+    logAttempt(userId, { ...logBase, passed: feedback.state === 'correct', outcome });
     showPronResult(feedback);
   };
 
@@ -1027,6 +1070,8 @@ export default function LearnSessionScreen() {
 
   const blockMic = () => {
     recordingRef.current = false;
+    stopVad();
+    setMicReady(false);
     // Volta dos Ajustes confere de novo (o AppState só reconfere enquanto o microfone não está pronto).
     micReadyRef.current = false;
     recorderPreparedRef.current = false;
@@ -1086,8 +1131,9 @@ export default function LearnSessionScreen() {
   };
   // A frase tocou e acabou (e o aluno está na hora de falar): prepara o gravador no iPhone.
   useEffect(() => {
-    if (Platform.OS !== 'ios') return;
+    // Vale nos dois sistemas: sem isso o Android só destravava o microfone 4 s depois de a frase acabar.
     if (isPlaying) { phrasePlayedRef.current = true; return; }
+    if (Platform.OS !== 'ios') return;
     if (!phrasePlayedRef.current || pronStatus !== 'listening') return;
     if (!currentStep || currentStep.kind !== 'pronunciation' || currentStep.phrase.type !== 'repeat') return;
     const t = setTimeout(() => { if (!isPlayingRef.current) prepareIosWhenQuiet(); }, 250);
@@ -1111,6 +1157,7 @@ export default function LearnSessionScreen() {
     setMicAsk(false);
     setMicBlocked(false);
     await prepareRecorderAhead();
+    setMicReady(true);
   };
 
   // Quando o exercício de fala aparece, só CONFERE a permissão (sem abrir o pedido do sistema).
@@ -1150,6 +1197,14 @@ export default function LearnSessionScreen() {
     Linking.openSettings().catch(() => {});
   };
 
+  /** Frase e palavras da frase atual, como dica para o reconhecimento do iPhone. */
+  const phraseHintWords = (): string[] => {
+    const text = currentStep?.kind === 'pronunciation' ? (currentStep.phrase.text ?? '') : '';
+    if (!text) return [];
+    const words = text.replace(/[^\p{L}\p{N}' ]+/gu, ' ').split(/\s+/).filter(w => w.length > 2);
+    return [...new Set([text, ...words])].slice(0, 20);
+  };
+
   /** Reconhecimento do iPhone sobre o arquivo gravado. Devolve as leituras (vazio se não entendeu). */
   const recognizeFile = (uri: string): Promise<string[]> => new Promise(resolve => {
     speechTranscriptRef.current = '';
@@ -1163,7 +1218,9 @@ export default function LearnSessionScreen() {
     fileAsrEndRef.current = finish;
     setTimeout(finish, 6000);
     try {
-      ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: false, maxAlternatives: 3, audioSource: { uri } });
+      ExpoSpeechRecognitionModule.start({ lang: 'en-US', interimResults: false, maxAlternatives: 3, audioSource: { uri },
+        // Dica para o reconhecimento: as palavras da frase (nomes e gíria, como "Felipe" e "bro"). Quem decide é o corretor.
+        contextualStrings: phraseHintWords() });
     } catch { finish(); }
   });
 
@@ -1207,6 +1264,63 @@ export default function LearnSessionScreen() {
     return false;
   };
 
+  // ── Vigia do silêncio ──
+  // Lê o nível do som a cada 100 ms. Depois que o aluno falou, ~1,2 s de silêncio para a gravação; sem fala
+  // nenhuma em 7 s, para também (vira "não ouvimos, fale de novo"); no máximo 15 s. O ruído de fundo de cada
+  // lugar é aprendido na hora (o menor nível ouvido), e "fala" é ficar bem acima dele.
+  const VAD = { tickMs: 100, silenceMs: 1200, noSpeechMs: 7000, maxMs: 15000, minSpeechMs: 250 };
+  const stopVad = () => {
+    if (vadTimerRef.current) { clearInterval(vadTimerRef.current); vadTimerRef.current = null; }
+  };
+  const startVad = (attempt: number) => {
+    stopVad();
+    const t0 = Date.now();
+    let floor = Infinity;
+    let speechMs = 0;
+    let heard = false;
+    let quietSince = 0;
+    vadTimerRef.current = setInterval(() => {
+      if (!recordingRef.current || pronAttemptRef.current !== attempt) { stopVad(); return; }
+      if (holdingRef.current) return; // segurando o botão: quem para é o soltar
+      const now = Date.now();
+      const elapsed = now - t0;
+      if (elapsed >= VAD.maxMs) { stopVad(); stopRecording(); return; }
+      let level: number | undefined;
+      try { level = recorder.getStatus().metering; } catch { /* sem nível */ }
+      // Sem leitura de nível (aparelho que não informa): para só pelo tempo máximo ou pelo toque.
+      if (typeof level !== 'number' || !isFinite(level) || level <= -100) return;
+      floor = Math.min(floor, level);
+      const f = Math.min(Math.max(floor, -65), -35);
+      if (level > Math.max(f + 12, -50)) {
+        speechMs += VAD.tickMs;
+        quietSince = 0;
+        if (speechMs >= VAD.minSpeechMs) heard = true;
+      } else if (level < f + 6) {
+        if (heard) {
+          if (!quietSince) quietSince = now;
+          if (now - quietSince >= VAD.silenceMs) { stopVad(); stopRecording(); }
+        } else if (elapsed >= VAD.noSpeechMs) { stopVad(); stopRecording(); }
+      } else {
+        quietSince = 0; // entre o ruído e a fala: ainda não é silêncio
+      }
+    }, VAD.tickMs);
+  };
+  useEffect(() => () => stopVad(), []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /** Cancela a gravação sem corrigir (ex.: o aluno pediu para ouvir a frase de novo). */
+  const cancelRecording = async () => {
+    if (!recordingRef.current) return;
+    stopVad();
+    pronAttemptRef.current += 1; // o que chegar desta gravação é ignorado
+    recordingRef.current = false;
+    holdingRef.current = false;
+    setMicStarting(false);
+    if (startPromiseRef.current) await withTimeout(startPromiseRef.current, 5000).catch(() => {});
+    if (recordStartedAtRef.current) await stopRecorderSafely().catch(() => false);
+    await resetAudioAfterRecording();
+    setPronStatus('listening');
+  };
+
   const startRecording = () => {
     if (recordingRef.current || stoppingRef.current) return;
     if (!currentStep || currentStep.kind !== 'pronunciation') return;
@@ -1246,6 +1360,7 @@ export default function LearnSessionScreen() {
         }
         recorder.record();
         recordStartedAtRef.current = Date.now();
+        if (recordingRef.current) startVad(pronAttemptRef.current);
         // O "sinal": o botão fica vermelho com "Pode falar" e vibra só quando o gravador já está gravando.
         // Antes ficava vermelho no toque, e quem falava logo perdia o começo (ou tudo, se soltava rápido).
         setMicStarting(false);
@@ -1271,6 +1386,8 @@ export default function LearnSessionScreen() {
   const stopRecording = async () => {
     if (!recordingRef.current || stoppingRef.current || !currentStep || currentStep.kind !== 'pronunciation') return;
 
+    stopVad();
+    holdingRef.current = false;
     const attempt = pronAttemptRef.current;
     const stale = () => pronAttemptRef.current !== attempt;
     const heldMs = Date.now() - recordingStartRef.current;
@@ -1303,7 +1420,7 @@ export default function LearnSessionScreen() {
         if (stale()) return;
         if (!started && await micDenied()) { blockMic(); return; }
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
-        showPronHint(isPortuguese ? 'Segure o botão (não é só tocar) e fale a frase.' : "Hold the button (don't just tap it) and say the phrase.");
+        showPronHint(isPortuguese ? 'Fale a frase depois que o botão ficar vermelho.' : 'Say the phrase after the button turns red.');
         setPronStatus('listening');
         return;
       }
@@ -1316,7 +1433,7 @@ export default function LearnSessionScreen() {
         // O sistema não entregou a gravação (Android). Não é erro do aluno: pede para gravar de novo.
         logAttempt(userId, { ...pronLogBase(), event: 'asr_error', errorCode: 'stop_rejected' });
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
-        showPronHint(isPortuguese ? 'Não deu para gravar. Segure o botão de novo e fale a frase.' : "Couldn't record that. Hold the button again and say the phrase.");
+        showPronHint(isPortuguese ? 'Não deu para gravar. Toque no microfone e fale a frase de novo.' : "Couldn't record that. Tap the mic and say the phrase again.");
         setPronStatus('listening');
         return;
       }
@@ -1343,6 +1460,8 @@ export default function LearnSessionScreen() {
       const formData = new FormData();
       formData.append('audio', { uri: audioUri, name: isWav ? 'recording.wav' : 'recording.m4a', type: isWav ? 'audio/wav' : 'audio/x-m4a' } as unknown as Blob);
       if (userId) formData.append('userId', userId);
+      // Dica para a transcrição: a frase que o aluno está treinando (quem decide se acertou é o corretor).
+      if (currentStep.phrase.text) formData.append('target', currentStep.phrase.text.slice(0, 200));
 
       const res = await fetch(`${API_BASE_URL}/api/transcribe`, { method: 'POST', body: formData });
       if (!res.ok) throw new Error('Transcription failed');
@@ -1363,6 +1482,39 @@ export default function LearnSessionScreen() {
       stoppingRef.current = false;
       prepareRecorderAhead(); // próxima tentativa (ou próxima frase) já com o gravador pronto
     }
+  };
+
+  // Microfone abre sozinho: quando a frase termina de tocar (ou no "Tentar de novo"), sem precisar do botão.
+  useEffect(() => {
+    if (!autoArmRef.current) return;
+    if (pronStatus !== 'listening' || micLocked || isPlaying || !micReady || micAsk || micBlocked || lsIntroState !== 'hide') return;
+    if (!currentStep || currentStep.kind !== 'pronunciation' || currentStep.phrase.type !== 'repeat') return;
+    // Só depois de a frase tocar (se ela tem áudio): nunca grava por cima da voz da Charlotte.
+    if (charlotteAudioUriRef.current && !phrasePlayedRef.current) return;
+    const t = setTimeout(() => {
+      if (!autoArmRef.current || recordingRef.current || stoppingRef.current || isPlayingRef.current) return;
+      autoArmRef.current = false;
+      startRecording();
+    }, 450);
+    return () => clearTimeout(t);
+  }, [pronStatus, micLocked, isPlaying, micReady, micAsk, micBlocked, lsIntroState, stepIdx, charlotteAudioUri]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Botão do microfone: toque abre (e para sozinho no silêncio); toque com ele aberto para; segurar e
+  // soltar também funciona (quem já se acostumou a segurar não perde a fala).
+  const onMicPressIn = () => {
+    pressInAtRef.current = Date.now();
+    if (recordingRef.current) { stopOnReleaseRef.current = true; return; }
+    stopOnReleaseRef.current = false;
+    holdingRef.current = true;
+    autoArmRef.current = false;
+    startRecording();
+  };
+  const onMicPressOut = () => {
+    const held = Date.now() - pressInAtRef.current;
+    const wasHolding = holdingRef.current;
+    holdingRef.current = false;
+    if (stopOnReleaseRef.current) { stopOnReleaseRef.current = false; stopRecording(); return; }
+    if (wasHolding && held >= 600 && recordingRef.current) stopRecording();
   };
 
   // ── Pronunciation: listen_write check ─────────────────────
@@ -2340,8 +2492,8 @@ export default function LearnSessionScreen() {
                           activeOpacity={0.85}
                           onPress={needsMic ? (micBlocked ? openMicSettings : requestMic) : undefined}
                           disabled={locked}
-                          onPressIn={needsMic || locked ? undefined : startRecording}
-                          onPressOut={needsMic || locked ? undefined : stopRecording}
+                          onPressIn={needsMic || locked ? undefined : onMicPressIn}
+                          onPressOut={needsMic || locked ? undefined : onMicPressOut}
                           style={{
                             width: 120, height: 120, borderRadius: 60,
                             backgroundColor: bg,
@@ -2364,17 +2516,19 @@ export default function LearnSessionScreen() {
                           ? ' '
                           : isRec
                           // O sinal de que o microfone está ouvindo: botão vermelho + vibração + "Pode falar".
-                          ? (isPortuguese ? 'Pode falar! Solte no fim da frase' : 'Speak now! Let go at the end')
+                          ? (isPortuguese ? 'Pode falar! Paramos quando você terminar' : 'Speak now! We stop when you finish')
                           : needsMic
                             ? (isPortuguese ? 'Microfone ainda não liberado' : 'Microphone not allowed yet')
                             : micStarting
                             ? (isPortuguese ? 'Espere, ligando o microfone…' : 'Wait, turning on the mic…')
-                            : (isPortuguese ? 'Segure para falar' : 'Hold to speak')}
+                            : (isPortuguese ? 'Toque para falar' : 'Tap to speak')}
                       </AppText>
-                      {!isRec && !needsMic && !locked && !micStarting && (
-                        // Dica curta: o aluno só começa a falar depois do sinal ("Pode falar").
+                      {!needsMic && !locked && (!micStarting || !!pronHint) && (
+                        // Dica curta: o aluno só começa a falar depois do sinal ("Pode falar"); gravando, o toque para.
                         <AppText style={{ marginTop: 4, fontSize: 12, color: pronHint ? '#D12A64' : C.navyLight, fontWeight: pronHint ? '700' : '500', textAlign: 'center', maxWidth: 300 }}>
-                          {pronHint ?? (isPortuguese ? 'Fale quando aparecer "Pode falar"' : 'Start talking when you see "Speak now"')}
+                          {pronHint ?? (isRec
+                            ? (isPortuguese ? 'Terminou antes? Toque no microfone' : 'Done early? Tap the mic')
+                            : (isPortuguese ? 'Fale quando aparecer "Pode falar"' : 'Start talking when you see "Speak now"'))}
                         </AppText>
                       )}
                       {!isRec && !needsMic && (

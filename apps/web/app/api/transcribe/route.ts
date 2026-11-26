@@ -64,6 +64,9 @@ export async function POST(request: NextRequest) {
     const audioFile = formData.get('audio') as File;
     const userId   = await requestUserId(request); // aluno do login
     const hintNames = ((formData.get('names') as string | null) ?? '').replace(/[^\p{L}\p{N} ,'-]/gu, '').slice(0, 120).trim();
+    // target (opcional): a frase que o aluno está treinando na trilha. Ajuda com sotaque e gíria ("No worries,
+    // bro" virava "Novosibirsk"); quem decide se acertou continua sendo o corretor do app.
+    const hintTarget = ((formData.get('target') as string | null) ?? '').replace(/[^\p{L}\p{N} ,.!?'’:-]/gu, '').slice(0, 200).trim();
 
     if (!audioFile) {
       return NextResponse.json(
@@ -108,7 +111,7 @@ export async function POST(request: NextRequest) {
       temperature: 0.2,
       // names (opcional): nomes que podem aparecer na fala (do aluno, do personagem). Sem a dica, nome em
       // português vira palavra inventada ("I'm Felipe" -> "Amphilippe").
-      prompt: `Transcribe exactly what was said, word for word, without correcting or improving the speech.${hintNames ? ` Names that may be said: ${hintNames}.` : ''}`,
+      prompt: `Transcribe exactly what was said, word for word, without correcting or improving the speech.${hintTarget ? ` The speaker is a Brazilian student of English practicing this phrase: "${hintTarget}". If they said something different or stopped early, write what they actually said.` : ''}${hintNames ? ` Names that may be said: ${hintNames}.` : ''}`,
     });
 
     logOpenAIUsage({

@@ -7,7 +7,8 @@ import { Platform } from 'react-native';
 import { supabase } from './supabase';
 import { getAppVersionFields } from './appVersion';
 
-export type AttemptEvent = 'attempt' | 'skip' | 'exit' | 'asr_error' | 'mic_blocked';
+// 'retry' = fala vazia ou cortada: o app pediu para falar de novo, sem reprovar (lib/speechGrade).
+export type AttemptEvent = 'attempt' | 'skip' | 'exit' | 'asr_error' | 'mic_blocked' | 'retry';
 
 export interface AttemptLog {
   level: string;
@@ -24,6 +25,11 @@ export interface AttemptLog {
   /** 'device' = reconhecimento do celular; 'server' = transcrição pelo servidor; 'typed' = digitado. */
   source?: 'device' | 'server' | 'typed' | null;
   errorCode?: string | null;
+  /** Resultado do corretor da fala: pass, close, fail ou retry (pedido de falar de novo). */
+  outcome?: 'pass' | 'close' | 'fail' | 'retry' | null;
+  /** Nota e resultado que o corretor antigo daria (para medir o que o novo salva). */
+  legacyScore?: number | null;
+  legacyPassed?: boolean | null;
 }
 
 let version: string | null | undefined;
@@ -46,6 +52,9 @@ export function logAttempt(userId: string | undefined | null, a: AttemptLog): vo
     passed: a.passed ?? null,
     source: a.source ?? null,
     error_code: a.errorCode ?? null,
+    ...(a.outcome ? { outcome: a.outcome } : {}),
+    ...(typeof a.legacyScore === 'number' ? { legacy_score: Math.round(a.legacyScore) } : {}),
+    ...(typeof a.legacyPassed === 'boolean' ? { legacy_passed: a.legacyPassed } : {}),
     platform: Platform.OS,
     app_version: version,
   };
