@@ -41,6 +41,74 @@ function comRisada(reply: string, humor: number, lang: 'pt' | 'en', id: string):
   return `${opcoes[hashDe(id) % opcoes.length]} ${reply}`;
 }
 
+// ── Segurança das respostas públicas ─────────────────────────────────────────
+// A resposta sai em público com o nome da marca e vem de um texto escrito por qualquer pessoa. Por isso:
+//   1. comentário que parece instrução para o robô não recebe resposta automática (vai para a equipe);
+//   2. reclamação e elogio usam respostas prontas (sem texto da IA);
+//   3. o resto só sai se passar na checagem (curta, sem link, sem @, sem e-mail, sem emoji, sem nome de
+//      fornecedor e sem número que não esteja no comentário, no post ou na FAQ). Se não passar, vai para a equipe.
+
+const PRONTAS: Record<'reclamacao' | 'elogio', Record<'pt' | 'en', string[]>> = {
+  reclamacao: {
+    pt: [
+      'Poxa, sentimos muito! Chama a gente no Direct que a equipe resolve com você.',
+      'Que pena que isso aconteceu. Manda uma mensagem no Direct para a equipe ver o seu caso.',
+      'Queremos resolver isso. Fala com a gente no Direct, por favor.',
+    ],
+    en: [
+      "We're sorry about that! Send us a DM and our team will sort it out.",
+      'Sorry to hear that. Please send us a DM so our team can look into it.',
+    ],
+  },
+  elogio: {
+    pt: ['Muito obrigado! Bons estudos!', 'Que bom ler isso, obrigado!', 'Valeu demais! Seguimos juntos no inglês.', 'Obrigado pelo carinho!'],
+    en: ['Thank you so much! Happy studying!', 'So glad to hear that, thank you!', 'Thanks a lot! Keep it up!'],
+  },
+};
+
+/** Comentário que tenta dar ordens ao robô (mudar regras, ditar a resposta, fazer se passar por outro). */
+const INSTRUCAO_RE = [
+  /\b(ignore|ignora|ignorar|ignorem|esque[çc]a|esque[çc]am|forget|disregard)\b.{0,40}\b(instru\w*|regras?|prompt|rules?|previous|anteriores?|acima|above|tudo)\b/i,
+  /\b(prompt|system message|mensagem do sistema|jailbreak|modo desenvolvedor|developer mode)\b/i,
+  /\b(you are now|act as|pretend to be|roleplay|finja (que|ser)|aja como|fa[çc]a de conta)\b|\bvoc[eê] agora [eé]\s/i,
+  /\b(responda|respond|reply|answer|escreva|write|repita|repeat|diga|say|poste|post|comente)\b.{0,40}\b(exatamente|exactly|literalmente|literally|verbatim|palavra por palavra|word for word|s[oó] isso)\b/i,
+  /\b(bot|rob[oô]|ia|ai|chatgpt|gpt|assistente|assistant)[\s,:]{1,3}(responda|diga|escreva|repita|poste|say|write|reply|repeat|post|ignore)\b/i,
+  // Só imperativos em português: "How do I say "x"?" é dúvida de inglês comum e não pode cair aqui.
+  /\b(responda|escreva|repita|poste|comente)\b.{0,15}["“'].{3,}["”']/i,
+];
+export function pareceInstrucao(comment: string): boolean {
+  return INSTRUCAO_RE.some(re => re.test(comment));
+}
+
+const FORNECEDOR_RE = /\b(openai|chat\s?gpt|gpt|gemini|claude|anthropic|google|microsoft|azure|meta ai|llama|elevenlabs|deepseek)\b/i;
+const LINK_RE = /(https?:\/\/|www\.|\b[\w-]+\.(com|br|net|org|io|app|ly|me|link|co|info|xyz|site|online|store|shop)\b)/i;
+const EMOJI_RE = /\p{Extended_Pictographic}/u;
+
+/** null = pode publicar; texto = motivo do bloqueio. */
+export function checarResposta(reply: string, aprovado: string): string | null {
+  const r = reply.trim();
+  if (!r) return 'resposta vazia';
+  if (r.length > 240) return 'resposta longa demais';
+  if (LINK_RE.test(r)) return 'resposta com link';
+  if (/@/.test(r)) return 'resposta com @ ou e-mail';
+  if (EMOJI_RE.test(r)) return 'resposta com emoji';
+  if (FORNECEDOR_RE.test(r)) return 'resposta cita fornecedor';
+  if (/#\w/.test(r)) return 'resposta com hashtag';
+  // Número (preço, prazo, desconto, telefone) só se já estiver no comentário, no post ou na FAQ.
+  const base = aprovado.replace(/\s+/g, ' ');
+  for (const n of r.match(/\d+(?:[.,]\d+)*/g) ?? []) {
+    if (!base.includes(n)) return `número que não está no post nem na FAQ (${n})`;
+  }
+  const palavra = r.match(/R\$|US\$|\$|€|\b(reais|dollars|desconto|discount|free|promo\w*|cupom|coupon)\b|d[oó]lares|gr[aá]tis/i)?.[0] ?? '';
+  if (palavra && !base.toLowerCase().includes(palavra.toLowerCase())) return `fala de preço ou desconto fora do aprovado (${palavra})`;
+  return null;
+}
+
+function pronta(tipo: 'reclamacao' | 'elogio', lang: 'pt' | 'en', id: string): string {
+  const op = PRONTAS[tipo][lang];
+  return op[hashDe(id) % op.length];
+}
+
 const PROMPT = (post: string, faq: string, previous: string[]) => `Você responde os comentários do Instagram do Queizy (@queizyapp), um app de inglês para brasileiros. A tutora do app é a Charlotte; o Igorfina é um personagem comediante da Família Queizy.
 
 Sobre o post comentado:
@@ -88,6 +156,10 @@ FAQ do app:
 ${faq}`;
 
 export async function decidir(comment: string, post: string, previous: string[] = []): Promise<Decisao | null> {
+  // Parece instrução para o robô: nem passa pela IA, vai para a equipe.
+  if (pareceInstrucao(comment)) {
+    return { category: 'instrucao', action: 'escalar', reply: '', note: 'Comentário parece instrução para o robô: sem resposta automática', humor: 0, lang: 'pt' };
+  }
   const { text: faq } = await getSupportFaq();
   const res = await aiFetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
@@ -104,7 +176,21 @@ export async function decidir(comment: string, post: string, previous: string[] 
     const d = JSON.parse(j.choices[0].message.content) as Partial<Decisao>;
     const action = (['responder', 'escalar', 'ocultar', 'ignorar'] as const).includes(d.action as Acao) ? d.action as Acao : 'ignorar';
     const humor = ['reclamacao', 'spam', 'ofensa'].includes(String(d.category)) ? 0 : Number(d.humor) || 0;
-    return { category: String(d.category ?? 'outro'), action, reply: String(d.reply ?? '').trim().slice(0, 300), note: String(d.note ?? ''), humor, lang: d.lang === 'en' ? 'en' : 'pt' };
+    const category = String(d.category ?? 'outro');
+    const lang: 'pt' | 'en' = d.lang === 'en' ? 'en' : 'pt';
+    let reply = String(d.reply ?? '').trim();
+    let note = String(d.note ?? '');
+    // Reclamação e elogio: resposta pronta (o texto da IA não vai para o público).
+    if (category === 'reclamacao' && action === 'escalar') reply = pronta('reclamacao', lang, comment);
+    else if (category === 'elogio' && action === 'responder') reply = pronta('elogio', lang, comment);
+    else if (reply && (action === 'responder' || action === 'escalar')) {
+      const bloqueio = checarResposta(reply, `${comment}\n${post}\n${faq}`);
+      if (bloqueio) {
+        // Não publica: a equipe vê a sugestão no /admin e decide.
+        return { category, action: 'escalar', reply: '', note: `Resposta da IA bloqueada (${bloqueio}): "${reply.slice(0, 300)}" | ${note}`, humor: 0, lang };
+      }
+    }
+    return { category, action, reply, note, humor, lang };
   } catch { return null; }
 }
 
