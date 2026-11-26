@@ -120,6 +120,10 @@
     {
       "path": "/api/cron/capacity-alert",
       "schedule": "7 * * * *"
+    },
+    {
+      "path": "/api/cron/support-bounces",
+      "schedule": "*/10 * * * *"
     }
   ],
   "ignoreCommand": "sh scripts/vercel-ignore.sh"
