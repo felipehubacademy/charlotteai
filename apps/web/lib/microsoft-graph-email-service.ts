@@ -83,23 +83,41 @@ let graphPausedUntil = 0;
 
 type GraphResult = 'ok' | 'down' | 'rejected';
 
+/** Resultado detalhado do envio: por onde saiu, o id no serviço reserva e o motivo da falha. */
+export interface SendEmailResult {
+  ok: boolean;
+  provider: 'graph' | 'resend' | null;
+  /** Id do e-mail no serviço reserva (o webhook de devolução usa para achar a mensagem). */
+  providerId: string | null;
+  /** Motivo da falha, curto, para mostrar à equipe. */
+  error: string | null;
+}
+
 export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
+  return (await sendEmailDetailed(opts)).ok;
+}
+
+/** Igual a sendEmail, mas devolve por onde saiu e o motivo da falha (usado pelas respostas do suporte). */
+export async function sendEmailDetailed(opts: SendEmailOptions): Promise<SendEmailResult> {
   const canFallback = !!opts.essential && !!process.env.RESEND_API_KEY;
 
   if (canFallback && Date.now() < graphPausedUntil) {
     return sendViaFallback(opts, 'Microsoft em pausa após falha recente');
   }
 
-  const r = await sendViaGraph(opts, canFallback);
-  if (r === 'ok') return true;
-  if (r === 'down') {
+  const g = await sendViaGraph(opts, canFallback);
+  if (g.r === 'ok') return { ok: true, provider: 'graph', providerId: null, error: null };
+  if (g.r === 'down') {
     graphPausedUntil = Date.now() + GRAPH_PAUSE_MS;
-    if (canFallback) return sendViaFallback(opts, 'Microsoft indisponível');
+    if (canFallback) {
+      const f = await sendViaFallback(opts, 'Microsoft indisponível');
+      return f.ok ? f : { ...f, error: `${g.error ?? 'Microsoft indisponível'}; reserva: ${f.error ?? 'falhou'}` };
+    }
   }
-  return false;
+  return { ok: false, provider: null, providerId: null, error: g.error ?? (g.r === 'down' ? 'Microsoft indisponível' : 'Envio recusado') };
 }
 
-async function sendViaGraph(opts: SendEmailOptions, fastFail: boolean): Promise<GraphResult> {
+async function sendViaGraph(opts: SendEmailOptions, fastFail: boolean): Promise<{ r: GraphResult; error?: string }> {
   let fromAddress = SENDER_EMAIL;
   const payload = {
     message: {
@@ -135,7 +153,7 @@ async function sendViaGraph(opts: SendEmailOptions, fastFail: boolean): Promise<
 
       if (res.ok) {
         console.log(`[Graph] Email enviado para ${opts.to} — "${opts.subject}"`);
-        return 'ok';
+        return { r: 'ok' };
       }
 
       const status = res.status;
@@ -173,30 +191,40 @@ async function sendViaGraph(opts: SendEmailOptions, fastFail: boolean): Promise<
       }
 
       console.error('[Graph] sendMail error:', status, errText);
-      return unavailable ? 'down' : 'rejected';
+      return { r: unavailable ? 'down' : 'rejected', error: `${unavailable ? 'Microsoft indisponível' : 'Recusado pela Microsoft'} (${status}): ${graphErrorText(errText)}` };
     } catch (e) {
       if (!fastFail && attempt < MAX_ATTEMPTS) {
         await sleep(Math.min(500 * attempt, 1500));
         continue;
       }
       console.error('[Graph] sendEmail exception:', e);
-      return 'down';
+      return { r: 'down', error: `Microsoft sem resposta: ${(e instanceof Error ? e.message : String(e)).slice(0, 200)}` };
     }
   }
-  return 'down';
+  return { r: 'down', error: 'Microsoft indisponível depois de várias tentativas' };
+}
+
+// Mensagem curta do erro do Graph ({"error":{"code","message"}}), para a equipe ler.
+function graphErrorText(raw: string): string {
+  try {
+    const j = JSON.parse(raw) as { error?: { code?: string; message?: string } };
+    const t = [j.error?.code, j.error?.message].filter(Boolean).join(': ');
+    if (t) return t.slice(0, 300);
+  } catch { /* não é JSON */ }
+  return raw.slice(0, 300);
 }
 
 // ── Reserva ───────────────────────────────────────────────────────────────────
 
 let fallbackClient: import('resend').Resend | null = null;
 
-async function sendViaFallback(opts: SendEmailOptions, reason: string): Promise<boolean> {
+async function sendViaFallback(opts: SendEmailOptions, reason: string): Promise<SendEmailResult> {
   try {
     if (!fallbackClient) {
       const { Resend } = await import('resend');
       fallbackClient = new Resend(process.env.RESEND_API_KEY);
     }
-    const { error } = await fallbackClient.emails.send({
+    const { data, error } = await fallbackClient.emails.send({
       from: `${FROM_NAME} <${SENDER_EMAIL}>`,
       to: opts.to,
       replyTo: REPLY_TO,
@@ -206,7 +234,7 @@ async function sendViaFallback(opts: SendEmailOptions, reason: string): Promise<
     });
     if (error) {
       console.error(`[EmailReserva] erro ao enviar para ${opts.to}:`, error.name, error.message);
-      return false;
+      return { ok: false, provider: null, providerId: null, error: `Recusado pelo serviço reserva: ${error.message}`.slice(0, 300) };
     }
     console.warn(`[EmailReserva] Email enviado pelo reserva (${reason}) para ${opts.to} — "${opts.subject}"`);
     // O alerta não segura a resposta do envio (o hook do login tem poucos segundos): roda depois da
@@ -217,10 +245,10 @@ async function sendViaFallback(opts: SendEmailOptions, reason: string): Promise<
     } catch {
       void alertFallbackInUse(reason);
     }
-    return true;
+    return { ok: true, provider: 'resend', providerId: data?.id ?? null, error: null };
   } catch (e) {
     console.error('[EmailReserva] exception:', e);
-    return false;
+    return { ok: false, provider: null, providerId: null, error: `Serviço reserva sem resposta: ${(e instanceof Error ? e.message : String(e)).slice(0, 200)}` };
   }
 }
 
@@ -273,6 +301,51 @@ export async function listBounceRecipients(sinceIso: string): Promise<{ scanned:
     for (const e of body.match(RE) ?? []) emails.add(e.toLowerCase());
   }
   return { scanned: msgs.length, emails: [...emails] };
+}
+
+// ── Avisos de não entrega com o texto completo (respostas do suporte) ─────────
+// Mesmas caixas de listBounceRecipients, mas devolve cada aviso (assunto, quando chegou e texto),
+// para ligar a devolução à resposta do suporte que voltou (lib/support-delivery). Avisos de
+// atraso ("delayed") não contam: o servidor ainda vai tentar de novo.
+export interface BounceNotice {
+  id: string;
+  mailbox: string;
+  from: string;
+  subject: string;
+  receivedDateTime: string;
+  text: string;
+}
+
+export function isBounceNotice(from: string, subject: string): boolean {
+  const f = from.toLowerCase();
+  const s = subject.toLowerCase();
+  if (/delay|atrasad|atraso|warning|aviso de atraso/.test(s)) return false;
+  return f.includes('postmaster') || f.includes('mailer-daemon') || f.includes('microsoftexchange')
+    || s.startsWith('undeliverable') || s.startsWith('undelivered') || s.includes('possível entregar') || s.includes('possivel entregar')
+    || s.includes('delivery status notification') || s.includes('mail delivery failed') || s.includes('returned mail') || s.includes('failure notice');
+}
+
+export async function listBounceNotices(sinceIso: string, maxPagesPerBox = 3): Promise<BounceNotice[]> {
+  const token = await getAccessToken();
+  const out: BounceNotice[] = [];
+  for (const box of [...new Set([SENDER_EMAIL, INBOX_EMAIL])]) {
+    let url: string | null = `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(box)}/messages`
+      + `?$select=id,subject,from,receivedDateTime,body&$top=100&$orderby=receivedDateTime desc`
+      + `&$filter=${encodeURIComponent(`receivedDateTime ge ${sinceIso}`)}`;
+    for (let page = 0; url && page < maxPagesPerBox; page++) {
+      const res: Response = await fetch(url, { headers: { Authorization: `Bearer ${token}`, Prefer: 'outlook.body-content-type="text"' } });
+      if (!res.ok) throw new Error(`Graph read ${box} ${res.status}: ${await res.text()}`);
+      const json = await res.json() as { value?: any[]; '@odata.nextLink'?: string };
+      for (const m of json.value ?? []) {
+        const from = (m.from?.emailAddress?.address ?? '').toLowerCase();
+        const subject = m.subject ?? '';
+        if (!isBounceNotice(from, subject)) continue;
+        out.push({ id: m.id, mailbox: box, from, subject, receivedDateTime: m.receivedDateTime ?? '', text: m.body?.content ?? '' });
+      }
+      url = json['@odata.nextLink'] ?? null;
+    }
+  }
+  return out;
 }
 
 // ── Leitura de mensagens da caixa (suporte) ────────────────────────────────────
