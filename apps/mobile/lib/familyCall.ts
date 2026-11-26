@@ -9,7 +9,7 @@
 import { PixelRatio, Platform } from 'react-native';
 import Constants from 'expo-constants';
 import { supabase } from './supabase';
-import { rememberLiveVoiceSession } from './liveVoiceUsage';
+import { flushPendingLiveVoiceCloses, rememberLiveVoiceSession } from './liveVoiceUsage';
 
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -82,6 +82,8 @@ export async function requestFamilyCall(character: string, topic?: string | null
   const { data } = await supabase.auth.getSession();
   const token = data.session?.access_token;
   if (!token) throw new Error('not_signed_in');
+  // Fim de ligação anterior que não chegou ao servidor: avisa antes de abrir a sessão nova (senão é cobrada pelo tempo corrido).
+  await flushPendingLiveVoiceCloses();
   const r = await fetch(`${API_BASE_URL}/api/family-call/session`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },

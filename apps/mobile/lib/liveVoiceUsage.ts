@@ -11,6 +11,7 @@
 // mais esses campos na conta (o banco ignora).
 
 import Constants from 'expo-constants';
+import * as SecureStore from 'expo-secure-store';
 import { supabase } from './supabase';
 import { localMonthStartStr } from './dateUtils';
 
@@ -69,6 +70,7 @@ export interface LiveVoiceStatus {
  * ele a tela caía num pool trial falso quando o getUser falhava.
  */
 export async function getLiveVoiceStatus(_level?: string, userIdArg?: string): Promise<LiveVoiceStatus> {
+  await flushPendingLiveVoiceCloses(); // fim de ligação que não chegou ao servidor: avisa antes de ler o saldo
   try {
     const r = await fetch(`${API_BASE_URL}/api/live-voice/usage`);
     if (r.ok) {
@@ -145,23 +147,93 @@ export function rememberLiveVoiceSession(sessionId: string | null | undefined): 
   currentUsageSession = typeof sessionId === 'string' && sessionId ? sessionId : null;
 }
 
+// Fim de ligação ainda não confirmado pelo servidor (sem rede, 503...). Fica guardado no aparelho até o
+// servidor responder; sem isso, a próxima ligação cobraria a sessão pelo tempo corrido até o teto.
+// O servidor ignora fim repetido (sessão já fechada), então reenviar é seguro.
+type PendingClose = { sessionId: string; seconds: number };
+const PENDING_KEY = 'live_voice_pending_close';
+const PENDING_MAX = 10;
+
+let storageQueue: Promise<unknown> = Promise.resolve();
+/** Leitura e gravação da lista em fila (fim de ligação e reenvio podem rodar juntos). */
+function updatePending(fn: (list: PendingClose[]) => PendingClose[]): Promise<PendingClose[]> {
+  const run = storageQueue.then(async () => {
+    let list: PendingClose[] = [];
+    try {
+      const raw = await SecureStore.getItemAsync(PENDING_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      if (Array.isArray(parsed)) list = parsed.filter(p => typeof p?.sessionId === 'string' && typeof p?.seconds === 'number');
+    } catch {}
+    const next = fn(list).slice(-PENDING_MAX);
+    if (JSON.stringify(next) === JSON.stringify(list)) return next; // só leitura
+    try {
+      if (next.length) await SecureStore.setItemAsync(PENDING_KEY, JSON.stringify(next));
+      else await SecureStore.deleteItemAsync(PENDING_KEY);
+    } catch {}
+    return next;
+  });
+  storageQueue = run.catch(() => {});
+  return run;
+}
+
+/** Avisa o fim ao servidor. true = resolvido (fechou, já estava fechada ou o id não vale); false = tentar de novo. */
+async function postClose(p: PendingClose): Promise<boolean> {
+  try {
+    const r = await fetch(`${API_BASE_URL}/api/live-voice/usage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionId: p.sessionId, seconds: p.seconds }),
+    });
+    if (r.ok || r.status === 400) return true;
+    console.warn('[liveVoiceUsage] consume error:', r.status);
+  } catch (e) {
+    console.warn('[liveVoiceUsage] consume error:', e);
+  }
+  return false;
+}
+
+const sleep = (ms: number) => new Promise(res => setTimeout(res, ms));
+
+let flushing: Promise<void> | null = null;
+
+/**
+ * Reenvia os fins de ligação guardados (antes de ler o saldo e antes de pedir uma ligação nova).
+ * Espera no máximo timeoutMs: sem rede, segue sem travar a tela (a lista continua guardada).
+ */
+export async function flushPendingLiveVoiceCloses(timeoutMs = 5000): Promise<void> {
+  if (!flushing) {
+    flushing = (async () => {
+      const list = await updatePending(l => l);
+      for (const p of list) {
+        if (await postClose(p)) await updatePending(l => l.filter(x => x.sessionId !== p.sessionId));
+      }
+    })().catch(() => {}).finally(() => { flushing = null; });
+  }
+  await Promise.race([flushing, sleep(timeoutMs)]);
+}
+
 /**
  * Registra segundos consumidos na sessão atual: avisa o servidor, que cobra e fecha a sessão.
  * Com 0 segundos (ligação que não conectou), fecha a sessão para não ser cobrada depois.
  * Sem sessão guardada (já avisada ou token não saiu), não faz nada.
+ * O aviso fica guardado até o servidor confirmar: tenta de novo logo (rede que caiu por instantes) e, se ainda
+ * falhar, na próxima leitura do saldo ou antes da próxima ligação (flushPendingLiveVoiceCloses).
  */
 export async function consumeLiveVoiceSeconds(seconds: number): Promise<void> {
   const sessionId = currentUsageSession;
   currentUsageSession = null; // lido antes de qualquer espera: a próxima ligação guarda a dela
   if (!sessionId) return;
-  const rounded = Math.max(0, Math.round(Number(seconds) || 0));
+  const pending: PendingClose = { sessionId, seconds: Math.max(0, Math.round(Number(seconds) || 0)) };
+  await updatePending(l => [...l.filter(x => x.sessionId !== sessionId), pending]);
 
-  const r = await fetch(`${API_BASE_URL}/api/live-voice/usage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ sessionId, seconds: rounded }),
-  });
-  if (!r.ok) console.warn('[liveVoiceUsage] consume error:', r.status);
+  // O servidor cobra pelo tempo corrido até o aviso (o valor do app só baixa até 20 s): reenviar logo custa menos.
+  for (const wait of [0, 2000, 5000]) {
+    if (wait) await sleep(wait);
+    if (await postClose(pending)) {
+      await updatePending(l => l.filter(x => x.sessionId !== sessionId));
+      return;
+    }
+  }
 }
 
 /** Formata segundos em 'MM min' para exibição no badge da home. */

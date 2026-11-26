@@ -42,7 +42,7 @@ import { CallVocabCard } from '@/components/vocabulary/CallVocabCard';
 import { AppText } from '@/components/ui/Text';
 import { useCallTimer } from '@/hooks/useCallTimer';
 import Constants from 'expo-constants';
-import { getLiveVoiceStatus, consumeLiveVoiceSeconds, rememberLiveVoiceSession, POOL_PREMIUM_SECONDS } from '@/lib/liveVoiceUsage';
+import { getLiveVoiceStatus, consumeLiveVoiceSeconds, rememberLiveVoiceSession, flushPendingLiveVoiceCloses, POOL_PREMIUM_SECONDS } from '@/lib/liveVoiceUsage';
 import { supabase } from '@/lib/supabase';
 import { translationService } from '@/lib/translation-service';
 import { track, trackDuration } from '@/lib/analytics';
@@ -966,6 +966,8 @@ export default function LiveVoiceModal({
       startCustomRingback();
 
       // Token fetch agora — paralelo ao ring.
+      // Antes, o fim de uma ligação anterior que não chegou ao servidor (senão ela é cobrada pelo tempo corrido).
+      await flushPendingLiveVoiceCloses();
       const { data: { session: authSession } } = await supabase.auth.getSession();
       const tokenRes = await fetch(`${API_BASE_URL}/api/realtime-token`, {
         method: 'POST',
