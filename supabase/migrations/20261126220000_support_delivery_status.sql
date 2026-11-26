@@ -27,3 +27,16 @@ CREATE INDEX IF NOT EXISTS idx_support_msg_delivery_sent
 -- Webhook do serviço reserva: acha a mensagem pelo id do e-mail.
 CREATE INDEX IF NOT EXISTS idx_support_msg_provider_id
   ON public.support_messages (delivery_provider_id) WHERE delivery_provider_id IS NOT NULL;
+
+-- Avisos de não entrega da Microsoft já usados: cada aviso marca no máximo uma resposta, para sempre.
+-- Os avisos são relidos a cada varredura; sem isto, depois que a resposta mais nova vira "Não entregue"
+-- (e sai da lista acompanhada), o mesmo aviso marcaria uma resposta mais antiga ao mesmo destinatário.
+-- Tabela à parte (e não uma coluna na mensagem) porque um reenvio que volta de novo traz outro aviso,
+-- e o primeiro tem de continuar registrado.
+CREATE TABLE IF NOT EXISTS public.support_bounce_notices (
+  ref         text PRIMARY KEY,                                                           -- internetMessageId do aviso (ou caixa:id no Graph)
+  message_id  uuid NOT NULL REFERENCES public.support_messages(id) ON DELETE CASCADE,     -- resposta ligada ao aviso
+  received_at timestamptz,                                                                -- quando o aviso chegou
+  created_at  timestamptz NOT NULL DEFAULT now()
+);
+ALTER TABLE public.support_bounce_notices ENABLE ROW LEVEL SECURITY;

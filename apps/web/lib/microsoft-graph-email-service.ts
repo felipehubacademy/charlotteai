@@ -309,6 +309,8 @@ export async function listBounceRecipients(sinceIso: string): Promise<{ scanned:
 // atraso ("delayed") não contam: o servidor ainda vai tentar de novo.
 export interface BounceNotice {
   id: string;
+  /** Id do aviso na internet (o mesmo nas duas caixas); vazio se o Graph não trouxer. */
+  internetMessageId: string;
   mailbox: string;
   from: string;
   subject: string;
@@ -330,7 +332,7 @@ export async function listBounceNotices(sinceIso: string, maxPagesPerBox = 3): P
   const out: BounceNotice[] = [];
   for (const box of [...new Set([SENDER_EMAIL, INBOX_EMAIL])]) {
     let url: string | null = `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(box)}/messages`
-      + `?$select=id,subject,from,receivedDateTime,body&$top=100&$orderby=receivedDateTime desc`
+      + `?$select=id,internetMessageId,subject,from,receivedDateTime,body&$top=100&$orderby=receivedDateTime desc`
       + `&$filter=${encodeURIComponent(`receivedDateTime ge ${sinceIso}`)}`;
     for (let page = 0; url && page < maxPagesPerBox; page++) {
       const res: Response = await fetch(url, { headers: { Authorization: `Bearer ${token}`, Prefer: 'outlook.body-content-type="text"' } });
@@ -340,7 +342,7 @@ export async function listBounceNotices(sinceIso: string, maxPagesPerBox = 3): P
         const from = (m.from?.emailAddress?.address ?? '').toLowerCase();
         const subject = m.subject ?? '';
         if (!isBounceNotice(from, subject)) continue;
-        out.push({ id: m.id, mailbox: box, from, subject, receivedDateTime: m.receivedDateTime ?? '', text: m.body?.content ?? '' });
+        out.push({ id: m.id, internetMessageId: m.internetMessageId ?? '', mailbox: box, from, subject, receivedDateTime: m.receivedDateTime ?? '', text: m.body?.content ?? '' });
       }
       url = json['@odata.nextLink'] ?? null;
     }

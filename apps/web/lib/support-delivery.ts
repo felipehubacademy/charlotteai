@@ -161,7 +161,8 @@ export function bounceReason(text: string): string {
 /**
  * Lê os avisos de não entrega das caixas de envio e liga cada um à resposta do suporte que voltou:
  * mesmo destinatário, mesmo assunto (quando o aviso traz o assunto) e aviso chegado depois do envio.
- * Só olha a Microsoft quando há respostas acompanhadas nos últimos 3 dias. Idempotente.
+ * Só olha a Microsoft quando há respostas acompanhadas nos últimos 3 dias. Idempotente: cada aviso
+ * marca no máximo uma resposta, também entre varreduras (support_bounce_notices).
  */
 export async function scanSupportBounces(): Promise<{ tracked: number; notices: number; bounced: number }> {
   const supabase = getSupabaseAdmin();
@@ -179,7 +180,11 @@ export async function scanSupportBounces(): Promise<{ tracked: number; notices: 
   const notices = await listBounceNotices(new Date(new Date(oldest).getTime() - 60_000).toISOString());
   let bounced = 0;
   const done = new Set<string>();
+  const seen = new Set<string>();
   for (const n of notices.sort((a, b) => a.receivedDateTime.localeCompare(b.receivedDateTime))) {
+    // O mesmo aviso pode estar nas duas caixas: o id da internet é o mesmo nas duas.
+    const ref = n.internetMessageId || `${n.mailbox}:${n.id}`;
+    if (seen.has(ref)) continue;
     const text = `${n.subject}\n${n.text}`.toLowerCase().replace(/\s+/g, ' ');
     const stripped = n.subject.replace(NDR_PREFIX, '');
     // Aviso com o assunto original ("Não é possível entregar: Re: ..."): o assunto tem de bater.
@@ -190,7 +195,24 @@ export async function scanSupportBounces(): Promise<{ tracked: number; notices: 
       .filter(t => (origSubject ? origSubject === t.subject : !t.subject || text.includes(t.subject)))
       .sort((a, b) => b.sentAt.localeCompare(a.sentAt))[0];
     if (!match) continue;
+    seen.add(ref);
+    // Aviso já ligado a uma resposta (nesta varredura ou numa anterior): não marca outra.
+    if (!(await claimBounceNotice(ref, match.id, n.receivedDateTime))) continue;
     if (await markSupportReplyBounced(match.id, bounceReason(n.text), n.receivedDateTime)) { bounced++; done.add(match.id); }
   }
   return { tracked: tracked.length, notices: notices.length, bounced };
+}
+
+/**
+ * Registra que o aviso foi ligado a esta resposta. Os avisos são relidos a cada varredura; sem o
+ * registro, depois que a resposta mais nova vira "Não entregue" (e sai da lista), o mesmo aviso
+ * marcaria uma resposta mais antiga ao mesmo destinatário. Devolve false se o aviso já foi usado
+ * (ou se não deu para registrar: fica para a próxima varredura, sem marcar nada agora).
+ */
+async function claimBounceNotice(ref: string, messageId: string, receivedAt: string): Promise<boolean> {
+  const { error } = await getSupabaseAdmin().from('support_bounce_notices')
+    .insert({ ref, message_id: messageId, received_at: receivedAt || null } as never);
+  if (!error) return true;
+  if (error.code !== '23505') console.error('[support-delivery] registrar aviso de não entrega', error.message);
+  return false;
 }
