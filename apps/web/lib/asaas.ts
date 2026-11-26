@@ -74,6 +74,15 @@ export function asaasSandboxConfigured(): boolean {
   return !!process.env.ASAAS_SANDBOX_API_KEY;
 }
 
+// Equipe: o próprio e-mail com +qualquercoisa. Quem digitar esses e-mails sem ser da equipe não ganha
+// nada: a conta (e o acesso de teste) fica num e-mail que só a equipe recebe.
+const SANDBOX_EMAIL = /^(felipe\.xavier1987(\+[^@]*)?@gmail\.com|[^@]+@hubacademybr\.com)$/i;
+
+/** E-mail da equipe, o único que pode usar o modo de teste (sandbox) do checkout. */
+export function isSandboxEmail(email: string | null | undefined): boolean {
+  return SANDBOX_EMAIL.test(String(email ?? '').trim().toLowerCase());
+}
+
 export class AsaasError extends Error {
   constructor(message: string, public status: number, public body: unknown) { super(message); }
 }

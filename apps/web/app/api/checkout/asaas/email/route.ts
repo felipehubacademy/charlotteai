@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
   const { data: u } = await supabase.from('charlotte_users').select('email, last_seen_at').eq('id', ck.user_id).maybeSingle();
   const user = u as { email: string | null; last_seen_at: string | null } | null;
   return NextResponse.json({
-    email: user?.email ?? null, canFix: ck.created_account === true && !user?.last_seen_at,
+    email: user?.email ?? null, canFix: ck.created_account === true && !user?.last_seen_at && ck.sandbox === false,
     // Para o pixel da tela de sucesso (mesmo event_id do servidor).
     // Compra de teste (sandbox) não dispara conversão.
     checkoutId: ck.sandbox ? null : id, plan: ck.plan, value: Number(ck.value_brl), trialDays: ck.trial_days,

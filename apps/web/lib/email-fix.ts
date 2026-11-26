@@ -5,7 +5,8 @@
 //   1. Tela de sucesso do site ("Não é esse? Corrigir"), no mesmo navegador do checkout (cookie).
 //   2. Suporte (IA no e-mail, WhatsApp e chat do app): localiza a compra e confere que é da pessoa.
 // Travas: só contas criadas pelo checkout, nunca usadas no app (sem login), dos últimos 30 dias,
-// e o e-mail novo não pode ter conta. Se algo não bate, o suporte passa para um atendente.
+// e o e-mail novo não pode ter conta. Compra de teste (sandbox) nunca troca de e-mail: o acesso de teste
+// só vale para e-mail da equipe. Se algo não bate, o suporte passa para um atendente.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { readAll, readIn } from '@/lib/db-batch';
 import { getCustomer, getPaymentCard, updateCustomerEmail, type WebPlan } from '@/lib/asaas';
@@ -15,7 +16,7 @@ import { sendWebWelcome } from '@/lib/web-welcome';
 const DAY = 86400000;
 const WINDOW_DAYS = 30;
 
-export type FixError = 'invalid_email' | 'email_in_use' | 'not_found' | 'account_used' | 'too_old' | 'same_email' | 'failed';
+export type FixError = 'invalid_email' | 'email_in_use' | 'not_found' | 'account_used' | 'too_old' | 'same_email' | 'sandbox' | 'failed';
 
 export const FIX_ERROR_PT: Record<FixError, string> = {
   invalid_email: 'Confira o e-mail novo.',
@@ -24,6 +25,7 @@ export const FIX_ERROR_PT: Record<FixError, string> = {
   account_used: 'Essa conta já foi usada no app. Fale com o suporte para trocar o e-mail.',
   too_old: 'A compra tem mais de 30 dias. Fale com o suporte para trocar o e-mail.',
   same_email: 'Esse já é o e-mail da conta.',
+  sandbox: 'Compra de teste: o e-mail não pode ser trocado.',
   failed: 'Não foi possível corrigir agora. Tente de novo em instantes.',
 };
 
@@ -85,10 +87,12 @@ export async function moveCheckoutEmail(checkoutId: string, newEmailRaw: string,
   if (!isValidEmailFormat(newEmail) || isDisposableEmail(newEmail)) return { ok: false, error: 'invalid_email' };
 
   const { data } = await supabase.from('asaas_checkouts')
-    .select('id, user_id, plan, trial_days, status, created_at, asaas_customer_id, asaas_payment_id, created_account')
+    .select('id, user_id, plan, trial_days, status, created_at, asaas_customer_id, asaas_payment_id, created_account, sandbox')
     .eq('id', checkoutId).maybeSingle();
-  const ck = data as (Checkout & { created_account: boolean | null }) | null;
+  const ck = data as (Checkout & { created_account: boolean | null; sandbox: boolean | null }) | null;
   if (!ck) return { ok: false, error: 'not_found' };
+  // Compra de teste libera acesso sem cobrança: mover a conta para outro e-mail daria acesso de graça a qualquer um.
+  if (ck.sandbox !== false) return { ok: false, error: 'sandbox' };
   if (Date.now() - new Date(ck.created_at).getTime() > WINDOW_DAYS * DAY) return { ok: false, error: 'too_old' };
   if (ck.created_account !== true) return { ok: false, error: 'account_used' };
 
@@ -151,7 +155,7 @@ export async function resolveSupportEmailFix(input: SupportFixInput): Promise<Su
   try {
     checkouts = await readAll('compras do site', () => supabase.from('asaas_checkouts')
       .select('id, user_id, plan, trial_days, status, created_at, asaas_customer_id, asaas_payment_id, created_account')
-      .eq('status', 'paid').eq('created_account', true).gte('created_at', since).order('id'));
+      .eq('status', 'paid').eq('created_account', true).eq('sandbox', false).gte('created_at', since).order('id'));
     if (!checkouts.length) return { status: 'escalate', reason: 'Nenhuma compra recente pelo site que possa ser a do aluno.' };
     users = await readIn('contas das compras', checkouts.map(c => c.user_id), chunk => supabase.from('charlotte_users')
       .select('id, email, name, last_seen_at').in('id', chunk).order('id'));
