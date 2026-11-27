@@ -4,6 +4,9 @@
 // criar senha vai para uma caixa que não existe. Dois caminhos usam este módulo:
 //   1. Tela de sucesso do site ("Não é esse? Corrigir"), no mesmo navegador do checkout (cookie).
 //   2. Suporte (IA no e-mail, WhatsApp e chat do app): localiza a compra e confere que é da pessoa.
+//      Desde 26/11 a IA não troca o e-mail sozinha: registra um pedido (asaas_events EMAIL_FIX_REQUEST)
+//      e o atendente aprova no /admin/support (approveSupportEmailFix). Nome e 4 dígitos do cartão
+//      são fáceis de obter por terceiros, então a troca da conta paga passa por uma pessoa.
 // Travas: só contas criadas pelo checkout, nunca usadas no app (sem login), dos últimos 30 dias,
 // e o e-mail novo não pode ter conta. Se algo não bate, o suporte passa para um atendente.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -124,14 +127,15 @@ export interface SupportFixInput {
 }
 
 export type SupportFixResult =
-  | { status: 'fixed'; email: string }
+  | { status: 'pending_review'; requestId: string; checkoutId: string; from: string | null; email: string; cardChecked: boolean }
   | { status: 'need_info'; missing: ('correctEmail' | 'identity')[] }
   | { status: 'escalate'; reason: string };
 
 /**
- * Localiza a compra feita com o e-mail errado e confere se é da pessoa antes de corrigir.
+ * Localiza a compra feita com o e-mail errado e confere se é da pessoa.
  * Conferência: nome do pagamento igual (primeiro e último) E, se houve cobrança no cartão,
  * os 4 últimos dígitos. Sem dados suficientes: pede. Ambíguo ou fora das travas: atendente.
+ * Tudo certo: NÃO troca o e-mail; registra o pedido para um atendente aprovar no /admin.
  */
 export async function resolveSupportEmailFix(input: SupportFixInput): Promise<SupportFixResult> {
   const supabase = getSupabaseAdmin();
@@ -189,15 +193,41 @@ export async function resolveSupportEmailFix(input: SupportFixInput): Promise<Su
   if (!named.length) return { status: 'escalate', reason: 'O nome informado não bate com o de nenhuma compra parecida.' };
   if (named.length > 1) return { status: 'escalate', reason: 'Mais de uma compra parecida com o mesmo nome: precisa de um atendente para escolher.' };
   const ck = named[0];
+  let cardChecked = false;
   if (ck.asaas_payment_id) {
     const card = await getPaymentCard(ck.asaas_payment_id).catch(() => null);
     if (card?.last4) {
       if (!input.cardLast4) return { status: 'need_info', missing: ['identity'] };
       if (String(input.cardLast4).replace(/\D/g, '').slice(-4) !== card.last4) return { status: 'escalate', reason: 'Os 4 últimos dígitos do cartão não batem.' };
+      cardChecked = true;
     }
   }
 
-  const r = await moveCheckoutEmail(ck.id, correct, 'support');
-  if (r.ok) return { status: 'fixed', email: r.email };
-  return { status: 'escalate', reason: `Correção bloqueada: ${FIX_ERROR_PT[r.error]}` };
+  // Pedido para o atendente aprovar (a troca em si é moveCheckoutEmail, chamada só na aprovação).
+  const from = byId.get(ck.user_id)?.email ?? null;
+  const requestId = `emailfixreq_${ck.id}_${Date.now()}`;
+  const { error: reqErr } = await supabase.from('asaas_events').insert({
+    id: requestId, event: 'EMAIL_FIX_REQUEST',
+    payload: { checkoutId: ck.id, userId: ck.user_id, from, to: correct, cardChecked, source: 'support' },
+  } as never);
+  if (reqErr) return { status: 'escalate', reason: `Não deu para registrar o pedido de troca de e-mail (${reqErr.message}).` };
+  return { status: 'pending_review', requestId, checkoutId: ck.id, from, email: correct, cardChecked };
+}
+
+/**
+ * Atendente aprova no /admin o pedido registrado pela IA do suporte: troca o e-mail com as mesmas travas
+ * do site (moveCheckoutEmail) e marca o pedido como aprovado. Pedido já aprovado não roda de novo.
+ */
+export async function approveSupportEmailFix(requestId: string, approvedBy: string): Promise<{ ok: true; email: string; from: string | null } | { ok: false; error: string }> {
+  if (!/^emailfixreq_[\w-]+$/.test(requestId)) return { ok: false, error: 'Pedido inválido.' };
+  const supabase = getSupabaseAdmin();
+  const { data } = await supabase.from('asaas_events').select('id, payload')
+    .eq('id', requestId).eq('event', 'EMAIL_FIX_REQUEST').maybeSingle();
+  const p = (data as { payload: Record<string, unknown> } | null)?.payload;
+  if (!p?.checkoutId || !p?.to) return { ok: false, error: 'Pedido de troca de e-mail não encontrado.' };
+  if (p.approvedAt) return { ok: false, error: 'Este pedido já foi aprovado.' };
+  const r = await moveCheckoutEmail(String(p.checkoutId), String(p.to), 'support');
+  if (!r.ok) return { ok: false, error: FIX_ERROR_PT[r.error] };
+  await supabase.from('asaas_events').update({ payload: { ...p, approvedAt: new Date().toISOString(), approvedBy } } as never).eq('id', requestId);
+  return { ok: true, email: r.email, from: (p.from as string | null) ?? null };
 }

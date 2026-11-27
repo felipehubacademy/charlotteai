@@ -23,6 +23,8 @@ import { welcomeSubscriberTemplate } from '@/lib/email-templates';
 import { sendOrQueue } from '@/lib/email-outbox';
 import { reconcileStoreSubscription, logRcEvent, type ReconcileResult } from '@/lib/rc-subscription';
 import { closeSiteAfterStore } from '@/lib/asaas-reconcile';
+import { bearerMatches } from '@/lib/secret-auth';
+import { logOpsError } from '@/lib/ops-monitor';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -55,8 +57,13 @@ const EXTENSION_EVENTS  = new Set(['SUBSCRIPTION_EXTENDED', 'TEMPORARY_ENTITLEME
 
 export async function POST(req: NextRequest) {
   // ── Auth ─────────────────────────────────────────────────────────────────
-  const authHeader = req.headers.get('authorization') ?? '';
-  if (WEBHOOK_SECRET && authHeader !== `Bearer ${WEBHOOK_SECRET}`) {
+  // Sem segredo configurado, recusa (antes aceitava qualquer chamada) e avisa o vigia do checkout.
+  if (!WEBHOOK_SECRET) {
+    console.error('[RC webhook] REVENUECAT_WEBHOOK_SECRET não configurado; aviso recusado');
+    await logOpsError('webhook', '/api/webhooks/revenuecat', new Error('REVENUECAT_WEBHOOK_SECRET não configurado'));
+    return NextResponse.json({ error: 'Webhook not configured' }, { status: 500 });
+  }
+  if (!bearerMatches(req.headers.get('authorization'), WEBHOOK_SECRET)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

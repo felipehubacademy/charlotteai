@@ -5,6 +5,7 @@
 // Chamado uma vez por dia pelo Cron da Vercel (vercel.json), que manda o CRON_SECRET.
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { bearerMatches } from '@/lib/secret-auth';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -12,7 +13,8 @@ export const maxDuration = 60;
 const KEEP_DAYS = 90;
 
 export async function GET(req: NextRequest) {
-  if (req.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
+  // Sem CRON_SECRET configurado, recusa (antes "Bearer undefined" passava).
+  if (!bearerMatches(req.headers.get('authorization'), process.env.CRON_SECRET)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const supabase = getSupabaseAdmin();

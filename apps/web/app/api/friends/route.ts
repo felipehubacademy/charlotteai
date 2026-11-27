@@ -20,6 +20,7 @@ import { sendDirectPush } from '@/lib/rally';
 import { blockedWith, isBlocked, isOffensiveHandle, isSuspended } from '@/lib/moderation';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { readIn } from '@/lib/db-batch';
+import { escapeHtml } from '@/lib/html-escape';
 
 // Ids vão para filtros .or() do banco: só aceita UUID (um texto montado de propósito apagava pedidos de todos).
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -205,10 +206,11 @@ export async function POST(req: NextRequest) {
     const fmt = (r?: { name: string | null; username: string | null; email: string }) => r ? `${r.name ?? ''} (@${r.username ?? '?'}) <${r.email}>` : '?';
     const reporter = rows.find(r => r.email && r.email === (user.email ?? ''));
     const reported = rows.find(r => r !== reporter);
+    // Nome, @, motivo e contexto são do usuário: escapados no HTML.
     await sendEmail({
       to: 'suporte@queizy.com',
       subject: `Denúncia de usuário: @${reported?.username ?? id}`,
-      html: `<p><b>Denúncia no app (analisar em até 24h)</b></p><p>Denunciado: ${fmt(reported)}<br/>Id: ${id}</p><p>Quem denunciou: ${fmt(reporter)}</p><p>Motivo: ${reason}<br/>Contexto: ${context || '—'}</p>`,
+      html: `<p><b>Denúncia no app (analisar em até 24h)</b></p><p>Denunciado: ${escapeHtml(fmt(reported))}<br/>Id: ${id}</p><p>Quem denunciou: ${escapeHtml(fmt(reporter))}</p><p>Motivo: ${escapeHtml(reason)}<br/>Contexto: ${escapeHtml(context || '—')}</p>`,
     }).catch(() => false);
     return NextResponse.json({ ok: true });
   }

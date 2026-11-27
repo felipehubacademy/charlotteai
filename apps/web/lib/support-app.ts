@@ -22,8 +22,9 @@ async function appConversation(userId: string) {
 export async function getAppChat(userId: string): Promise<{ status: string | null; messages: AppChatMessage[] }> {
   const conv = await appConversation(userId);
   if (!conv) return { status: null, messages: [] };
+  // Notas internas (system com intent: motivo do cancelamento, conferência da troca de e-mail) não aparecem para o aluno.
   const { data } = await getSupabaseAdmin().from('support_messages').select('id, author, author_name, body, created_at')
-    .eq('conversation_id', conv.id).order('created_at', { ascending: false }).limit(100);
+    .eq('conversation_id', conv.id).or('author.neq.system,intent.is.null').order('created_at', { ascending: false }).limit(100);
   return { status: conv.status, messages: ((data ?? []) as AppChatMessage[]).reverse() };
 }
 

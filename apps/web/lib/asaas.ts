@@ -38,8 +38,12 @@ export async function resolveCoupon(raw: unknown): Promise<CouponResult> {
     if (row.starts_at && new Date(row.starts_at).getTime() > Date.now()) return { ok: false, error: 'not_started' };
     if (row.expires_at && new Date(row.expires_at).getTime() < Date.now()) return { ok: false, error: 'expired' };
     if (row.max_uses != null) {
-      const { count } = await supabase.from('asaas_checkouts').select('id', { count: 'exact', head: true }).eq('coupon_code', code).eq('status', 'paid');
-      if ((count ?? 0) >= row.max_uses) return { ok: false, error: 'used_up' };
+      // Conta as pagas e as em andamento dos últimos 30 min (checkouts em paralelo passavam do limite).
+      const recent = new Date(Date.now() - 30 * 60000).toISOString();
+      const { count, error: countErr } = await supabase.from('asaas_checkouts').select('id', { count: 'exact', head: true }).eq('coupon_code', code)
+        .or(`status.eq.paid,and(status.eq.created,created_at.gte.${recent})`);
+      // Sem conseguir contar, não libera um cupom limitado.
+      if (countErr || (count ?? 0) >= row.max_uses) return { ok: false, error: 'used_up' };
     }
     // duration_cycles: quantas cobranças levam o desconto (null = todas). Depois o webhook volta ao preço cheio.
     return { ok: true, code, pct: row.discount_pct, kind: 'coupon', plans: (row.plans ?? ['monthly', 'annual']) as WebPlan[], cycles: row.duration_cycles ?? null, noTrial: !!row.no_trial };

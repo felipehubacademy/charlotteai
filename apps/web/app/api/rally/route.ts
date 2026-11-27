@@ -8,6 +8,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { recentHits, recordHit } from '@/lib/rate-hits';
 import { readIn } from '@/lib/db-batch';
 import { pushIsPt } from '@/lib/expo-notification-service';
 import { friendsOf } from '@/lib/friends';
@@ -139,9 +140,15 @@ export async function POST(req: NextRequest) {
 
   const code = cleanCode(body.code);
   if (!code) return NextResponse.json({ error: 'invalid_code' }, { status: 400 });
+  // Código errado conta como tentativa (máx. 20 por hora por aluno): impede varrer códigos de competição.
+  // Passou do limite: responde como código inexistente (o app já tem essa mensagem).
+  if ((await recentHits('rally_join', user.id, 3600000)) >= 20) return NextResponse.json({ error: 'not_found' }, { status: 404 });
   const { data: row } = await supabase.from('rallies').select('*').eq('code', code).maybeSingle();
   const rally = row as RallyRow | null;
-  if (!rally) return NextResponse.json({ error: 'not_found' }, { status: 404 });
+  if (!rally) {
+    await recordHit('rally_join', user.id);
+    return NextResponse.json({ error: 'not_found' }, { status: 404 });
+  }
 
   if (body.action === 'join') {
     if (rally.finalized || new Date(rally.ends_at).getTime() <= Date.now()) return NextResponse.json({ error: 'ended' }, { status: 400 });

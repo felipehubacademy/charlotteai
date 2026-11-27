@@ -271,6 +271,19 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
             <div key={m.id} style={{ alignSelf: m.direction === 'in' ? 'flex-start' : 'flex-end', maxWidth: '85%', background: m.direction === 'in' ? 'var(--s1)' : 'var(--volt)', border: '1px solid var(--b1)', borderRadius: 12, padding: '9px 12px' }}>
               <div style={{ fontSize: 11, color: 'var(--t3)', marginBottom: 4 }}>{m.author === 'human' && m.author_name ? `${m.author_name} (atendente)` : AUTHOR[m.author] ?? m.author}{m.intent ? ` · ${m.intent}` : ''} · {fmt(m.created_at)}</div>
               <div style={{ fontSize: 13, color: 'var(--t1)', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>{m.body}</div>
+              {(() => {
+                // Pedido de troca de e-mail conferido pela IA: só troca com a aprovação de um atendente.
+                const req = m.author === 'system' && m.intent === 'email_errado' ? /Pedido (emailfixreq_[\w-]+)\./.exec(m.body)?.[1] : null;
+                if (!req || data?.messages.some(x => x.body.includes(`pedido ${req} concluído`))) return null;
+                return (
+                  <button className="adm-btn-sm primary" style={{ marginTop: 8 }} disabled={busy} onClick={async () => {
+                    if (!window.confirm('Aprovar a troca do e-mail desta conta? O link de criar senha vai para o e-mail novo. Confira na conversa que a pessoa é mesmo a dona da compra.')) return;
+                    if (await post({ action: 'approve_email_fix', requestId: req })) {
+                      setReply('Pronto! Corrigimos o e-mail da sua conta e mandamos para ele o link para criar a senha. Depois é só entrar no app com esse e-mail.');
+                    }
+                  }}>Aprovar troca de e-mail</button>
+                );
+              })()}
             </div>
           ))}
           {err && <div className="adm-alert crit">{err}</div>}

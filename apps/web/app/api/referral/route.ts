@@ -19,6 +19,9 @@ export const dynamic = 'force-dynamic';
 const SITE = 'https://queizy.com';
 const REWARD_SECONDS = 5 * 60;
 const CLAIM_WINDOW_DAYS = 14;
+// Quem convida ganha os minutos por até N convites aceitos por mês (Brasília); depois disso a dupla
+// continua valendo, mas sem minutos para quem convidou (evita farra de contas falsas). O convidado ganha uma vez só.
+const INVITER_REWARDS_PER_MONTH = 10;
 const DAY = 86400000;
 
 // Mensagens prontas das cutucadas (mesmas chaves no app).
@@ -52,6 +55,12 @@ async function ensureCode(userId: string, name: string | null): Promise<string> 
     if (!error) return code;
   }
   throw new Error('Não foi possível gerar o código.');
+}
+
+/** Dia 1 do mês, 00:00 de Brasília, em ISO UTC. */
+function monthStartIso(): string {
+  const now = new Date(Date.now() - 3 * 3600000);
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1) + 3 * 3600000).toISOString();
 }
 
 /** Segunda-feira 00:00 de Brasília, em ISO UTC. */
@@ -184,14 +193,20 @@ export async function POST(req: NextRequest) {
     const { data: reverse } = await supabase.from('referrals').select('invitee_id').eq('inviter_id', user.id).eq('invitee_id', inviterId).maybeSingle();
     if (reverse) return NextResponse.json({ error: 'already_buddies' }, { status: 400 });
 
+    // rewarded = quem convidou ganhou os minutos. O convidado ganha sempre, uma vez (invitee_id é a chave).
     const { error } = await supabase.from('referrals').insert({ invitee_id: user.id, inviter_id: inviterId, code, rewarded: true } as never);
     if (error) return NextResponse.json({ error: 'already_claimed' }, { status: 409 });
+    // Limite do mês para quem convida, contado depois de gravar (dois aceites ao mesmo tempo não passam do limite).
+    const { count: monthRewards } = await supabase.from('referrals').select('invitee_id', { count: 'exact', head: true })
+      .eq('inviter_id', inviterId).eq('rewarded', true).gte('created_at', monthStartIso());
+    const inviterRewarded = (monthRewards ?? 0) <= INVITER_REWARDS_PER_MONTH;
+    if (!inviterRewarded) await supabase.from('referrals').update({ rewarded: false } as never).eq('invitee_id', user.id);
 
     const { data: invRow } = await supabase.from('charlotte_users').select('name, live_voice_bonus_seconds, expo_push_token, charlotte_level, app_language').eq('id', inviterId).maybeSingle();
     const inviter = invRow as { name: string | null; live_voice_bonus_seconds: number | null; expo_push_token: string | null; charlotte_level: string | null; app_language: string | null } | null;
     await Promise.all([
       supabase.from('charlotte_users').update({ live_voice_bonus_seconds: (me.live_voice_bonus_seconds ?? 0) + REWARD_SECONDS } as never).eq('id', user.id),
-      inviter ? supabase.from('charlotte_users').update({ live_voice_bonus_seconds: (inviter.live_voice_bonus_seconds ?? 0) + REWARD_SECONDS } as never).eq('id', inviterId) : Promise.resolve(),
+      inviter && inviterRewarded ? supabase.from('charlotte_users').update({ live_voice_bonus_seconds: (inviter.live_voice_bonus_seconds ?? 0) + REWARD_SECONDS } as never).eq('id', inviterId) : Promise.resolve(),
     ]);
     // Conquistas de padrinho (Trouxe um Amigo, Turma Formada...) saem na hora.
     await supabase.rpc('rn_award_achievements', { p_user_id: inviterId }).then(undefined, () => {});
@@ -200,7 +215,9 @@ export async function POST(req: NextRequest) {
     const who = firstName(me.name) ?? (pt ? 'Alguém' : 'Someone');
     await sendPush(inviter?.expo_push_token ?? null,
       pt ? `${who} aceitou seu convite` : `${who} accepted your invite`,
-      pt ? `Agora vocês estudam juntos. Você ganhou ${REWARD_SECONDS / 60} minutos de Live Voice.` : `You're now study buddies. You got ${REWARD_SECONDS / 60} Live Voice minutes.`,
+      inviterRewarded
+        ? (pt ? `Agora vocês estudam juntos. Você ganhou ${REWARD_SECONDS / 60} minutos de Live Voice.` : `You're now study buddies. You got ${REWARD_SECONDS / 60} Live Voice minutes.`)
+        : (pt ? 'Agora vocês estudam juntos.' : "You're now study buddies."),
       { type: 'buddy_joined', screen: 'study-together' });
     return NextResponse.json({ ok: true, inviter: firstName(inviter?.name ?? null), rewardMinutes: REWARD_SECONDS / 60 });
   }

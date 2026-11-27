@@ -9,6 +9,7 @@ export const dynamic = 'force-dynamic';
  * POST { id, action: 'status', status }    muda o status
  * POST { id, action: 'cancel_site' }       cancela a assinatura do site do aluno e apaga cobrança em aberto
  * POST { id, action: 'take' }              assume o atendimento (avisa o aluno com o nome do atendente)
+ * POST { id, action: 'approve_email_fix', requestId }  aprova a troca de e-mail conferida pela IA (lib/email-fix)
  */
 import { NextRequest, NextResponse } from 'next/server';
 import { cancelSiteSubscription } from '@/lib/site-subscription';
@@ -20,6 +21,7 @@ import { sendInstagramText } from '@/lib/instagram';
 import { logMessage, setConversationStatus, supportReplyHtml, ticketTakenText } from '@/lib/support-service';
 import { notifyAppReply } from '@/lib/support-app';
 import { guessLang } from '@/lib/support-agent';
+import { approveSupportEmailFix } from '@/lib/email-fix';
 
 // Login próprio (Bearer) com papel que acessa 'support', ou a senha mestra antiga.
 async function checkAuth(req: NextRequest) {
@@ -196,6 +198,22 @@ export async function POST(req: NextRequest) {
     const msg = r.status === 'not_site' ? 'Esta conta não tem assinatura pelo site.' : r.status === 'no_renewal' ? 'Compra no Pix anual: não renova, não há o que cancelar.'
       : r.status === 'not_found' ? 'Assinatura não encontrada no processador.' : r.message;
     return NextResponse.json({ error: msg }, { status: r.status === 'error' ? 502 : 400 });
+  }
+
+  // Troca de e-mail pedida pelo suporte: a IA conferiu a compra e registrou o pedido; o atendente aprova aqui.
+  // O pedido precisa estar na nota interna desta conversa (não aprova pedido de outra conversa).
+  if (body.action === 'approve_email_fix') {
+    const requestId = String(body.requestId ?? '');
+    if (!/^emailfixreq_[\w-]+$/.test(requestId)) return NextResponse.json({ error: 'Pedido inválido.' }, { status: 400 });
+    const { data: note } = await supabase.from('support_messages').select('id').eq('conversation_id', c.id)
+      .eq('author', 'system').eq('intent', 'email_errado').like('body', `%${requestId}%`).limit(1);
+    if (!note?.length) return NextResponse.json({ error: 'Pedido não encontrado nesta conversa.' }, { status: 404 });
+    const r = await approveSupportEmailFix(requestId, admin.email ?? 'admin');
+    await audit(admin, 'support.approve_email_fix', 'support_conversation', c.id, { requestId, ok: r.ok });
+    if (!r.ok) return NextResponse.json({ error: r.error }, { status: 400 });
+    await logMessage({ conversationId: c.id, direction: 'out', author: 'system', intent: 'email_errado',
+      body: `Troca de e-mail aprovada por ${firstName ?? admin.email ?? 'atendente'}: de ${r.from ?? '(sem e-mail)'} para ${r.email} (pedido ${requestId} concluído).` });
+    return NextResponse.json({ ok: true, email: r.email });
   }
 
   if (body.action === 'status') {
