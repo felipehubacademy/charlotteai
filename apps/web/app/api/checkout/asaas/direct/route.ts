@@ -7,12 +7,12 @@
 //        o pagamento); só com check=1 (a cada ~20 s) consulta o Asaas, que limita a 25 mil chamadas em 12 h.
 //
 // O cartão só passa por aqui a caminho do Asaas: nunca é gravado nem vai para log.
-// sandbox: ambiente de testes do Asaas, só para os e-mails da equipe (SANDBOX_EMAIL). Nada ali é cobrado.
+// sandbox: ambiente de testes do Asaas, só para os e-mails da equipe (isSandboxEmail em lib/asaas). Nada ali é cobrado.
 import { NextRequest, NextResponse } from 'next/server';
 import { randomUUID } from 'crypto';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import {
-  asaasConfigured, asaasSandboxConfigured, AsaasError, ensurePayer, createCardSubscription, createPixPayment,
+  asaasConfigured, asaasSandboxConfigured, isSandboxEmail, AsaasError, ensurePayer, createCardSubscription, createPixPayment,
   getPaymentIn, paymentsOfSubscription, PAID_STATUSES, type CardData,
 } from '@/lib/asaas';
 import { prepareWebCheckout, checkoutRowFields } from '@/lib/web-checkout';
@@ -20,10 +20,6 @@ import { activateTrial, handlePaymentPaid, type CheckoutRow } from '@/lib/asaas-
 import { logOpsError } from '@/lib/ops-monitor';
 
 export const dynamic = 'force-dynamic';
-
-// Equipe: o próprio e-mail com +qualquercoisa. Quem digitar esses e-mails sem ser da equipe não ganha
-// nada: a conta (e o acesso de teste) fica num e-mail que só a equipe recebe.
-const SANDBOX_EMAIL = /^(felipe\.xavier1987(\+[^@]*)?@gmail\.com|[^@]+@hubacademybr\.com)$/i;
 
 // Robôs testando cartão roubado: depois de 3 recusas na última hora (por IP, e-mail ou CPF), bloqueia.
 const CARD_FAILS_MAX = 3;
@@ -86,7 +82,7 @@ export async function POST(req: NextRequest) {
   const supabase = getSupabaseAdmin();
   const email = String(body.email ?? '').trim().toLowerCase();
   const sandbox = body.sandbox === true;
-  if (sandbox && (!asaasSandboxConfigured() || !SANDBOX_EMAIL.test(email))) {
+  if (sandbox && (!asaasSandboxConfigured() || !isSandboxEmail(email))) {
     return NextResponse.json({ error: 'O modo de teste é só para a equipe.' }, { status: 403 });
   }
   if (!sandbox && !asaasConfigured()) return NextResponse.json({ error: 'A assinatura pelo site abre em breve. Por enquanto, assine pelo app.' }, { status: 503 });

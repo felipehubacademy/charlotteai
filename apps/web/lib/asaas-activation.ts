@@ -9,7 +9,7 @@
 // Compra de teste (sandbox) libera o acesso e manda o e-mail, mas não vira receita, comissão nem conversão.
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { recordRevenueEvent } from '@/lib/revenue';
-import { paidPaymentsOf, updateSubscriptionValue, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan, type AsaasPayment } from '@/lib/asaas';
+import { paidPaymentsOf, updateSubscriptionValue, isSandboxEmail, WEB_PRODUCT, WEB_ANNUAL_PIX, type WebPlan, type AsaasPayment } from '@/lib/asaas';
 import { sendWebWelcome } from '@/lib/web-welcome';
 import { sendCapiEvent, type MetaTracking } from '@/lib/meta-capi';
 import { sendPaymentReceipt } from '@/lib/subscription-notices';
@@ -86,8 +86,20 @@ async function restorePriceIfCouponEnded(checkoutId: string, subscriptionId: str
   }
 }
 
+// Compra de teste (sandbox) só libera acesso para conta com e-mail da equipe. Trava extra: se a conta mudou
+// de e-mail depois do checkout (ou a linha veio de outro caminho), não ganha acesso de graça.
+async function sandboxBlocked(row: CheckoutRow): Promise<boolean> {
+  if (!row.sandbox) return false;
+  const { data } = await getSupabaseAdmin().from('charlotte_users').select('email').eq('id', row.user_id).maybeSingle();
+  const email = (data as { email: string | null } | null)?.email ?? null;
+  if (isSandboxEmail(email)) return false;
+  console.warn('[asaas] compra de teste em conta fora da equipe, acesso não liberado:', row.id);
+  return true;
+}
+
 /** Cartão validado e assinatura criada com teste grátis (mensal ou anual): acesso durante o teste (+1 dia para a 1ª cobrança). */
 export async function activateTrial(row: CheckoutRow): Promise<void> {
+  if (await sandboxBlocked(row)) return;
   await grantAccess(row.user_id, row.plan, new Date(Date.now() + (row.trial_days + 1) * DAY), row.method);
   await sendWebWelcome(row.user_id, row.plan, row.trial_days);
   await metaConversion(row, 'StartTrial', 0);
@@ -98,6 +110,7 @@ export async function activateTrial(row: CheckoutRow): Promise<void> {
  * em asaas_events (paid_<cobrança>) garante que roda uma vez por cobrança.
  */
 export async function handlePaymentPaid(row: CheckoutRow, p: AsaasPayment): Promise<void> {
+  if (await sandboxBlocked(row)) return;
   const supabase = getSupabaseAdmin();
   const lockId = `paid_${p.id}`;
   const { error: locked } = await supabase.from('asaas_events').insert({ id: lockId, event: 'PAYMENT_PAID_LOCK', payload: { checkout: row.id } } as never);

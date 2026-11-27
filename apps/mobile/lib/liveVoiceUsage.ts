@@ -4,9 +4,18 @@
 //   Premium / Institucional: 20 min (1 200 s)
 // Quem esgota: trial -> upsell (assine); premium/inst -> comprar minutos
 // avulsos (IAP, fase futura). Reset automático no 1º dia de cada mês.
+//
+// O uso é contado no SERVIDOR (/api/live-voice/usage): o token da ligação (/api/realtime-token ou
+// /api/family-call/session) abre uma sessão de minutos e devolve usageSessionId; no fim, o app avisa
+// os segundos e o servidor cobra (pool do mês, depois bônus) e faz a virada do mês. O app não grava
+// mais esses campos na conta (o banco ignora).
 
+import Constants from 'expo-constants';
+import * as SecureStore from 'expo-secure-store';
 import { supabase } from './supabase';
 import { localMonthStartStr } from './dateUtils';
+
+const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
 // ── Constantes ──────────────────────────────────────────────────────────────
 
@@ -51,7 +60,8 @@ export interface LiveVoiceStatus {
 /**
  * Obtém o status atual do pool. O tamanho do pool agora vem da ASSINATURA
  * (trial 5 min · premium/institucional 20 min), não do nível.
- * Se o mês mudou desde o último uso, zera o contador automaticamente.
+ * Lê do servidor (que faz a virada do mês). Se o servidor não responder, lê a conta
+ * e calcula igual, sem gravar nada.
  * O parâmetro `level` é legado (ignorado no cálculo do pool).
  *
  * `userIdArg`: quando informado, evita o `supabase.auth.getUser()` (chamada de
@@ -60,6 +70,25 @@ export interface LiveVoiceStatus {
  * ele a tela caía num pool trial falso quando o getUser falhava.
  */
 export async function getLiveVoiceStatus(_level?: string, userIdArg?: string): Promise<LiveVoiceStatus> {
+  await flushPendingLiveVoiceCloses(); // fim de ligação que não chegou ao servidor: avisa antes de ler o saldo
+  try {
+    const r = await fetch(`${API_BASE_URL}/api/live-voice/usage`);
+    if (r.ok) {
+      const j = await r.json();
+      if (typeof j?.secondsRemaining === 'number' && typeof j?.poolTotal === 'number') {
+        return {
+          secondsUsed:      Number(j.secondsUsed ?? 0),
+          secondsRemaining: j.secondsRemaining,
+          poolTotal:        j.poolTotal,
+          bonusSeconds:     Number(j.bonusSeconds ?? 0),
+          resetDate:        String(j.resetDate ?? localMonthStartStr()),
+        };
+      }
+    }
+  } catch (e) {
+    console.warn('[liveVoiceUsage] server status error:', e);
+  }
+
   let userId = userIdArg;
   if (!userId) {
     const {
@@ -83,24 +112,14 @@ export async function getLiveVoiceStatus(_level?: string, userIdArg?: string): P
   const poolTotal = getPoolForSubscription(data.subscription_status, data.is_institutional);
   const bonus     = data.live_voice_bonus_seconds ?? 0;
 
-  // Virou o mês → reset
-  // Degustação não renova: os 3 min são uma vez só. Ao assinar, a data vazia faz o reset e libera o mês cheio.
+  // Virou o mês → conta como zerado (quem grava a virada é o servidor).
+  // Degustação não renova: os 3 min são uma vez só.
   const taster = isTasteStatus(data.subscription_status) && !data.is_institutional;
   const needsReset = !taster && (
     !data.live_voice_reset_date ||
     data.live_voice_reset_date < thisMonth);
 
   if (needsReset) {
-    const { error: updErr } = await supabase
-      .from('charlotte_users')
-      .update({
-        live_voice_seconds_used: 0,
-        live_voice_reset_date:   thisMonth,
-      })
-      .eq('id', userId);
-
-    if (updErr) console.warn('[liveVoiceUsage] reset error:', updErr.message);
-
     return {
       secondsUsed:      0,
       secondsRemaining: poolTotal + bonus, // mensal cheio + bônus (bônus não zera)
@@ -120,46 +139,101 @@ export async function getLiveVoiceStatus(_level?: string, userIdArg?: string): P
   };
 }
 
+// Sessão de minutos da ligação em andamento (usageSessionId do token). Uma ligação por vez.
+let currentUsageSession: string | null = null;
+
+/** Guarda o usageSessionId devolvido por /api/realtime-token ou /api/family-call/session. */
+export function rememberLiveVoiceSession(sessionId: string | null | undefined): void {
+  currentUsageSession = typeof sessionId === 'string' && sessionId ? sessionId : null;
+}
+
+// Fim de ligação ainda não confirmado pelo servidor (sem rede, 503...). Fica guardado no aparelho até o
+// servidor responder; sem isso, a próxima ligação cobraria a sessão pelo tempo corrido até o teto.
+// O servidor ignora fim repetido (sessão já fechada), então reenviar é seguro.
+type PendingClose = { sessionId: string; seconds: number };
+const PENDING_KEY = 'live_voice_pending_close';
+const PENDING_MAX = 10;
+
+let storageQueue: Promise<unknown> = Promise.resolve();
+/** Leitura e gravação da lista em fila (fim de ligação e reenvio podem rodar juntos). */
+function updatePending(fn: (list: PendingClose[]) => PendingClose[]): Promise<PendingClose[]> {
+  const run = storageQueue.then(async () => {
+    let list: PendingClose[] = [];
+    try {
+      const raw = await SecureStore.getItemAsync(PENDING_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      if (Array.isArray(parsed)) list = parsed.filter(p => typeof p?.sessionId === 'string' && typeof p?.seconds === 'number');
+    } catch {}
+    const next = fn(list).slice(-PENDING_MAX);
+    if (JSON.stringify(next) === JSON.stringify(list)) return next; // só leitura
+    try {
+      if (next.length) await SecureStore.setItemAsync(PENDING_KEY, JSON.stringify(next));
+      else await SecureStore.deleteItemAsync(PENDING_KEY);
+    } catch {}
+    return next;
+  });
+  storageQueue = run.catch(() => {});
+  return run;
+}
+
+/** Avisa o fim ao servidor. true = resolvido (fechou, já estava fechada ou o id não vale); false = tentar de novo. */
+async function postClose(p: PendingClose): Promise<boolean> {
+  try {
+    const r = await fetch(`${API_BASE_URL}/api/live-voice/usage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionId: p.sessionId, seconds: p.seconds }),
+    });
+    if (r.ok || r.status === 400) return true;
+    console.warn('[liveVoiceUsage] consume error:', r.status);
+  } catch (e) {
+    console.warn('[liveVoiceUsage] consume error:', e);
+  }
+  return false;
+}
+
+const sleep = (ms: number) => new Promise(res => setTimeout(res, ms));
+
+let flushing: Promise<void> | null = null;
+
 /**
- * Registra segundos consumidos na sessão atual.
+ * Reenvia os fins de ligação guardados (antes de ler o saldo e antes de pedir uma ligação nova).
+ * Espera no máximo timeoutMs: sem rede, segue sem travar a tela (a lista continua guardada).
+ */
+export async function flushPendingLiveVoiceCloses(timeoutMs = 5000): Promise<void> {
+  if (!flushing) {
+    flushing = (async () => {
+      const list = await updatePending(l => l);
+      for (const p of list) {
+        if (await postClose(p)) await updatePending(l => l.filter(x => x.sessionId !== p.sessionId));
+      }
+    })().catch(() => {}).finally(() => { flushing = null; });
+  }
+  await Promise.race([flushing, sleep(timeoutMs)]);
+}
+
+/**
+ * Registra segundos consumidos na sessão atual: avisa o servidor, que cobra e fecha a sessão.
+ * Com 0 segundos (ligação que não conectou), fecha a sessão para não ser cobrada depois.
+ * Sem sessão guardada (já avisada ou token não saiu), não faz nada.
+ * O aviso fica guardado até o servidor confirmar: tenta de novo logo (rede que caiu por instantes) e, se ainda
+ * falhar, na próxima leitura do saldo ou antes da próxima ligação (flushPendingLiveVoiceCloses).
  */
 export async function consumeLiveVoiceSeconds(seconds: number): Promise<void> {
-  if (seconds <= 0) return;
-  const rounded = Math.round(seconds);
+  const sessionId = currentUsageSession;
+  currentUsageSession = null; // lido antes de qualquer espera: a próxima ligação guarda a dela
+  if (!sessionId) return;
+  const pending: PendingClose = { sessionId, seconds: Math.max(0, Math.round(Number(seconds) || 0)) };
+  await updatePending(l => [...l.filter(x => x.sessionId !== sessionId), pending]);
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) return;
-
-  const { data, error: fetchErr } = await supabase
-    .from('charlotte_users')
-    .select('live_voice_seconds_used, live_voice_bonus_seconds, is_institutional, subscription_status')
-    .eq('id', user.id)
-    .single();
-
-  if (fetchErr || !data) {
-    console.warn('[liveVoiceUsage] fetch error:', fetchErr?.message);
-    return;
+  // O servidor cobra pelo tempo corrido até o aviso (o valor do app só baixa até 20 s): reenviar logo custa menos.
+  for (const wait of [0, 2000, 5000]) {
+    if (wait) await sleep(wait);
+    if (await postClose(pending)) {
+      await updatePending(l => l.filter(x => x.sessionId !== sessionId));
+      return;
+    }
   }
-
-  // Consome do pool MENSAL primeiro; o que passar sai do saldo BÔNUS comprado.
-  const poolTotal = getPoolForSubscription(data.subscription_status, data.is_institutional);
-  const current   = data.live_voice_seconds_used ?? 0;
-  const bonus     = data.live_voice_bonus_seconds ?? 0;
-  const monthlyAvail = Math.max(0, poolTotal - current);
-  const fromMonthly  = Math.min(rounded, monthlyAvail);
-  const fromBonus    = rounded - fromMonthly;
-
-  const { error: updErr } = await supabase
-    .from('charlotte_users')
-    .update({
-      live_voice_seconds_used:  current + fromMonthly,
-      live_voice_bonus_seconds: Math.max(0, bonus - fromBonus),
-    })
-    .eq('id', user.id);
-
-  if (updErr) console.warn('[liveVoiceUsage] consume error:', updErr.message);
 }
 
 /** Formata segundos em 'MM min' para exibição no badge da home. */

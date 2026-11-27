@@ -6,6 +6,7 @@
 
 import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { createClient } from '@supabase/supabase-js';
@@ -37,6 +38,9 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as Partial<Body>;
     const { sessionId, userLevel, lang } = body;
     const userId = await requestUserId(request); // só o aluno do login (o userId do corpo não vale)
+    // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+    const denied = await checkAiAccess(userId, 'summarize-chat', request.headers.get('x-lang'));
+    if (denied) return denied;
 
     if (!sessionId || !userId || !userLevel) {
       return NextResponse.json(

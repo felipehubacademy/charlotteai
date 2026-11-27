@@ -9,6 +9,7 @@
 import { PixelRatio, Platform } from 'react-native';
 import Constants from 'expo-constants';
 import { supabase } from './supabase';
+import { flushPendingLiveVoiceCloses, rememberLiveVoiceSession } from './liveVoiceUsage';
 
 const API_BASE_URL = (Constants.expoConfig?.extra?.apiBaseUrl as string) ?? 'https://charlotte.hubacademybr.com';
 
@@ -70,6 +71,8 @@ function ensureStrategy() {
 export interface FamilyCallStart {
   token: string; agentId: string; prompt: string; firstMessage: string;
   characterName: string; remainingSeconds: number;
+  /** Sessão de minutos no servidor (o fim é avisado por consumeLiveVoiceSeconds). */
+  usageSessionId?: string;
 }
 
 /** Pede ao servidor a ligação (confere minutos e a liberação) — erro 'monthly_pool_exhausted' / 'not_available'. */
@@ -79,6 +82,8 @@ export async function requestFamilyCall(character: string, topic?: string | null
   const { data } = await supabase.auth.getSession();
   const token = data.session?.access_token;
   if (!token) throw new Error('not_signed_in');
+  // Fim de ligação anterior que não chegou ao servidor: avisa antes de abrir a sessão nova (senão é cobrada pelo tempo corrido).
+  await flushPendingLiveVoiceCloses();
   const r = await fetch(`${API_BASE_URL}/api/family-call/session`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
@@ -86,6 +91,7 @@ export async function requestFamilyCall(character: string, topic?: string | null
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(j.error || 'failed');
+  rememberLiveVoiceSession(j.usageSessionId);
   return j as FamilyCallStart;
 }
 

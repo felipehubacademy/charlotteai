@@ -12,6 +12,7 @@
 
 import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { judgeObjectives } from '@/lib/objective-judge';
@@ -329,19 +330,49 @@ Rules:
 - American English by default. Calorosa, encorajadora, paciente.${nudgeBlock}${nextPendingBlock}`;
 }
 
+// Tamanho do pedido: a missão e o histórico vão para o prompt (pedido gigante = custo alto de IA).
+const MAX_BODY_BYTES   = 100_000;
+const MAX_DEF_CHARS    = 30_000;
+const MAX_HISTORY      = 40;
+const MAX_TURN_CHARS   = 1_500;
+const MAX_MESSAGE_CHARS = 1_000;
+
+/** Histórico limpo: só user/assistant com texto, as últimas MAX_HISTORY falas, cada uma cortada. */
+function cleanHistory(raw: unknown): Payload['history'] {
+  return (Array.isArray(raw) ? raw : [])
+    .filter((h): h is { role: 'user' | 'assistant'; content: string } =>
+      !!h && (h.role === 'user' || h.role === 'assistant') && typeof h.content === 'string')
+    .slice(-MAX_HISTORY)
+    .map(h => ({ role: h.role, content: h.content.slice(0, MAX_TURN_CHARS) }));
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as Payload & { user_id?: string };
-    const {
-      history, guided_chat: gc, level: rawLevel, user_message, unit_title,
-      stuck_turns, next_objective_id, user_name,
-    } = body;
+    if (Number(request.headers.get('content-length') ?? 0) > MAX_BODY_BYTES) {
+      return NextResponse.json({ error: 'Payload too large' }, { status: 413 });
+    }
     const userId = (await requestUserId(request)) ?? undefined; // aluno do login
+    // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+    const denied = await checkAiAccess(userId, 'guided-chat', request.headers.get('x-lang'));
+    if (denied) return denied;
+
+    const body = (await request.json()) as Payload & { user_id?: string };
+    const { guided_chat: gc, level: rawLevel, user_message, next_objective_id } = body;
+    const history = cleanHistory(body.history);
+    const unit_title = typeof body.unit_title === 'string' ? body.unit_title.slice(0, 200) : undefined;
+    const user_name = typeof body.user_name === 'string' ? body.user_name.slice(0, 60) : null;
+    const stuck_turns = Number.isFinite(Number(body.stuck_turns)) ? Math.max(0, Math.min(50, Number(body.stuck_turns))) : 0;
     // Trilha do Igorfina = público do Novice (regras de simplicidade e de fluxo do iniciante).
     const level = rawLevel === 'Igorfina' ? 'Novice' : rawLevel;
 
     if (!user_message || typeof user_message !== 'string') {
       return NextResponse.json({ error: 'Missing user_message' }, { status: 400 });
+    }
+    if (user_message.length > MAX_MESSAGE_CHARS) {
+      return NextResponse.json({ error: 'Message too long' }, { status: 413 });
+    }
+    if (!gc || typeof gc !== 'object' || !Array.isArray(gc.objectives) || JSON.stringify(gc).length > MAX_DEF_CHARS) {
+      return NextResponse.json({ error: 'Invalid guided_chat' }, { status: 400 });
     }
 
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [

@@ -10,6 +10,7 @@
 
 import { requestUserId } from '@/lib/request-user';
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import OpenAI from 'openai';
 import { aiFetch, transcribeModel, transcribedSeconds } from '@/lib/ai-models';
 import { judgeObjectives } from '@/lib/objective-judge';
@@ -394,17 +395,50 @@ async function tts(text: string, voicedBy: 'charlotte' | 'charlie', userId?: str
 }
 
 // ── Handler ─────────────────────────────────────────────────────────
+// Tamanho do pedido: o papel e o histórico vão para o prompt (pedido gigante = custo alto de IA).
+const MAX_AUDIO_BYTES   = 10 * 1024 * 1024;
+const MAX_PAYLOAD_CHARS = 100_000;
+const MAX_DEF_CHARS     = 30_000;
+const MAX_HISTORY       = 40;
+const MAX_TURN_CHARS    = 1_500;
+
+/** Histórico limpo: só user/assistant com texto, as últimas MAX_HISTORY falas, cada uma cortada. */
+function cleanHistory(raw: unknown): Payload['history'] {
+  return (Array.isArray(raw) ? raw : [])
+    .filter((h): h is { role: 'user' | 'assistant'; content: string } =>
+      !!h && (h.role === 'user' || h.role === 'assistant') && typeof h.content === 'string')
+    .slice(-MAX_HISTORY)
+    .map(h => ({ role: h.role, content: h.content.slice(0, MAX_TURN_CHARS) }));
+}
+
 export async function POST(request: NextRequest) {
   try {
+    const userId   = (await requestUserId(request)) ?? undefined; // aluno do login (o user_id do formulário não vale)
+    // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+    const denied = await checkAiAccess(userId, 'roleplay', request.headers.get('x-lang'));
+    if (denied) return denied;
+    if (Number(request.headers.get('content-length') ?? 0) > MAX_AUDIO_BYTES + MAX_PAYLOAD_CHARS * 4) {
+      return NextResponse.json({ error: 'Payload too large' }, { status: 413 });
+    }
     const formData = await request.formData();
     const audio    = formData.get('audio') as File | null;
     const payload  = formData.get('payload') as string | null;
-    const userId   = (await requestUserId(request)) ?? undefined; // aluno do login (o user_id do formulário não vale)
     if (!audio || !payload) {
       return NextResponse.json({ error: 'Missing audio or payload' }, { status: 400 });
     }
+    if (typeof payload !== 'string' || payload.length > MAX_PAYLOAD_CHARS || (typeof audio.size === 'number' && audio.size > MAX_AUDIO_BYTES)) {
+      return NextResponse.json({ error: 'Payload too large' }, { status: 413 });
+    }
 
-    const { history, role_play: rp, level: rawLevel, unit_title, stuck_turns, next_objective_id, user_name } = JSON.parse(payload) as Payload;
+    const parsed = JSON.parse(payload) as Payload;
+    const { role_play: rp, level: rawLevel, next_objective_id } = parsed;
+    const history = cleanHistory(parsed.history);
+    const unit_title = typeof parsed.unit_title === 'string' ? parsed.unit_title.slice(0, 200) : undefined;
+    const user_name = typeof parsed.user_name === 'string' ? parsed.user_name.slice(0, 60) : null;
+    const stuck_turns = Number.isFinite(Number(parsed.stuck_turns)) ? Math.max(0, Math.min(50, Number(parsed.stuck_turns))) : 0;
+    if (!rp || typeof rp !== 'object' || !Array.isArray(rp.objectives) || JSON.stringify(rp).length > MAX_DEF_CHARS) {
+      return NextResponse.json({ error: 'Invalid role_play' }, { status: 400 });
+    }
     // Trilha do Igorfina = público do Novice (regras de simplicidade e de fluxo do iniciante).
     const level = rawLevel === 'Igorfina' ? 'Novice' : rawLevel;
 

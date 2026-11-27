@@ -42,7 +42,7 @@ import { CallVocabCard } from '@/components/vocabulary/CallVocabCard';
 import { AppText } from '@/components/ui/Text';
 import { useCallTimer } from '@/hooks/useCallTimer';
 import Constants from 'expo-constants';
-import { getLiveVoiceStatus, consumeLiveVoiceSeconds, POOL_PREMIUM_SECONDS } from '@/lib/liveVoiceUsage';
+import { getLiveVoiceStatus, consumeLiveVoiceSeconds, rememberLiveVoiceSession, flushPendingLiveVoiceCloses, POOL_PREMIUM_SECONDS } from '@/lib/liveVoiceUsage';
 import { supabase } from '@/lib/supabase';
 import { translationService } from '@/lib/translation-service';
 import { track, trackDuration } from '@/lib/analytics';
@@ -966,6 +966,8 @@ export default function LiveVoiceModal({
       startCustomRingback();
 
       // Token fetch agora — paralelo ao ring.
+      // Antes, o fim de uma ligação anterior que não chegou ao servidor (senão ela é cobrada pelo tempo corrido).
+      await flushPendingLiveVoiceCloses();
       const { data: { session: authSession } } = await supabase.auth.getSession();
       const tokenRes = await fetch(`${API_BASE_URL}/api/realtime-token`, {
         method: 'POST',
@@ -994,7 +996,9 @@ export default function LiveVoiceModal({
         throw new Error('Failed to get session token (403)');
       }
       if (!tokenRes.ok) throw new Error('Failed to get session token');
-      const { clientSecret } = await tokenRes.json();
+      const { clientSecret, usageSessionId } = await tokenRes.json();
+      // Sessão de minutos no servidor: o fim da ligação (consumeLiveVoiceSeconds) é avisado nela.
+      rememberLiveVoiceSession(usageSessionId);
       if (!clientSecret) throw new Error('No client secret returned');
 
       // PC + addTrack ja foram criados ANTES do token fetch (mic acende imediato).
@@ -1495,6 +1499,8 @@ export default function LiveVoiceModal({
       await pc.setRemoteDescription({ type: 'answer', sdp: answerSdp } as any);
 
     } catch (error: any) {
+      // Não conectou: fecha a sessão de minutos (se o token saiu) com 0 s.
+      consumeLiveVoiceSeconds(0).catch(console.warn);
       // Limpar recursos parcialmente alocados (mic, peer connection)
       localStreamRef.current?.getTracks().forEach((t: any) => t.stop());
       localStreamRef.current = null;

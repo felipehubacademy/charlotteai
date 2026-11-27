@@ -3,20 +3,17 @@
 //   impression = ligação inteira com uma imitação do personagem (toda fala na voz dela).
 //   resume = retomada depois da pausa por inatividade: segue a conversa, sem cumprimentar de novo.
 //   → { token, agentId, prompt, firstMessage, remainingSeconds }
-// Confere os minutos do mês (mesma cota do Live Voice). A chave do ElevenLabs nunca sai do servidor: o app recebe só um
-// token de conversa de curta duração.
+// Minutos do mês (mesma cota do Live Voice): abre a sessão de minutos no servidor (lib/live-voice-usage) e devolve
+// usageSessionId; o app avisa o fim em /api/live-voice/usage. A chave do ElevenLabs nunca sai do servidor: o app recebe
+// só um token de conversa de curta duração.
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { buildCallSession, generateOpener, type CallLevel } from '@/lib/family-call';
 import { characterOf, tagPortuguese } from '@/lib/characters';
-import { isTasterRow, TASTE_LIVE_VOICE_SECONDS } from '@/lib/taste';
+import { startLiveVoiceSession, closeLiveVoiceSession } from '@/lib/live-voice-usage';
 
 export const dynamic = 'force-dynamic';
-
-function monthStart(tz: string): string {
-  const p = new Intl.DateTimeFormat('en-CA', { timeZone: tz, year: 'numeric', month: '2-digit' }).formatToParts(new Date());
-  return `${p.find(x => x.type === 'year')?.value}-${p.find(x => x.type === 'month')?.value}-01`;
-}
 
 export async function POST(req: NextRequest) {
   const h = req.headers.get('authorization') ?? '';
@@ -26,21 +23,27 @@ export async function POST(req: NextRequest) {
   if (!auth?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const key = process.env.ELEVENLABS_API_KEY;
   if (!key) return NextResponse.json({ error: 'Not configured' }, { status: 500 });
+  // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+  const denied = await checkAiAccess(auth.user.id, 'live-voice-token', req.headers.get('x-lang'));
+  if (denied) return denied;
 
   const body = await req.json().catch(() => ({}));
   const { data: u } = await supabase.from('charlotte_users')
-    .select('name, charlotte_level, beta_features, timezone, subscription_status, is_institutional, live_voice_seconds_used, live_voice_reset_date, live_voice_bonus_seconds')
+    .select('name, charlotte_level, beta_features, timezone')
     .eq('id', auth.user.id).maybeSingle();
   const user = u as Record<string, any> | null;
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  // Minutos: mesma regra do /api/realtime-token (degustação 3 min uma vez; 7 dias grátis 5; assinatura 20).
-  const taster = isTasterRow(user as never);
-  const needsReset = !taster && (!user.live_voice_reset_date || user.live_voice_reset_date < monthStart(user.timezone || 'America/Sao_Paulo'));
-  const used = needsReset ? 0 : Number(user.live_voice_seconds_used ?? 0);
-  const pool = taster ? TASTE_LIVE_VOICE_SECONDS : user.subscription_status === 'trial' ? 300 : 1200;
-  const remaining = Math.max(0, pool - used) + Number(user.live_voice_bonus_seconds ?? 0); // degustação também usa o bônus
-  if (remaining <= 0) return NextResponse.json({ error: 'monthly_pool_exhausted' }, { status: 403 });
+  // Minutos: mesma regra do /api/realtime-token (degustação 3 min uma vez; sem assinatura ativa 5; assinatura 20; bônus
+  // em cima). Abre a sessão de minutos (cobra a anterior que o app não fechou); se o token não sair, fecha sem cobrar.
+  const uid = auth.user.id;
+  const usage = await startLiveVoiceSession(uid, 'family');
+  if (!usage.ok) {
+    if (usage.error === 'monthly_pool_exhausted') return NextResponse.json({ error: 'monthly_pool_exhausted' }, { status: 403 });
+    return NextResponse.json({ error: 'pool_check_unavailable' }, { status: 503 });
+  }
+  const remaining = usage.remaining;
+  const cancelUsage = () => closeLiveVoiceSession(uid, usage.sessionId, 0, true).catch(e => console.warn('[family-call] cancel usage:', e));
 
   const level = (['Novice', 'Inter', 'Advanced'].includes(user.charlotte_level) ? user.charlotte_level : 'Inter') as CallLevel;
   const characterId = String(body.character ?? 'igorfina');
@@ -61,7 +64,7 @@ export async function POST(req: NextRequest) {
   ]);
   const memories = ((calls ?? []) as { memory: string | null; summary: string | null }[]).map(c => c.memory || c.summary || '').filter(Boolean);
   const session = buildCallSession({ characterId, impressionId, level, name: user.name ?? '', topic, trackTopic, memories, resume });
-  if (!session) return NextResponse.json({ error: 'unknown_character' }, { status: 400 });
+  if (!session) { await cancelUsage(); return NextResponse.json({ error: 'unknown_character' }, { status: 400 }); }
 
   const tz = user.timezone || 'America/Sao_Paulo';
   const now = new Date();
@@ -73,9 +76,11 @@ export async function POST(req: NextRequest) {
     streak: Number((prog as { streak_days?: number } | null)?.streak_days ?? 0), topic, trackTopic, memories,
   });
 
-  const r = await fetch(`https://api.elevenlabs.io/v1/convai/conversation/token?agent_id=${session.agentId}`, { headers: { 'xi-api-key': key } });
+  const r = await fetch(`https://api.elevenlabs.io/v1/convai/conversation/token?agent_id=${session.agentId}`, { headers: { 'xi-api-key': key } })
+    .catch(async e => { await cancelUsage(); throw e; });
   if (!r.ok) {
     console.error('[family-call] token error', r.status, await r.text().catch(() => ''));
+    await cancelUsage();
     return NextResponse.json({ error: 'token_failed' }, { status: 502 });
   }
   const { token } = (await r.json()) as { token: string };
@@ -84,5 +89,5 @@ export async function POST(req: NextRequest) {
   const firstMessage = c.elevenVoiceIdPt ? tagPortuguese(await openerP) : await openerP;
   // A regra do TURNO 1 cita a primeira fala: entra no prompt depois de pronta.
   const prompt = session.prompt.replace('{GREETING}', firstMessage.replace(/<\/?[A-Za-z]+>/g, ''));
-  return NextResponse.json({ token, agentId: session.agentId, prompt, firstMessage, characterName: session.characterName, impression: session.impression?.id ?? null, remainingSeconds: remaining });
+  return NextResponse.json({ token, agentId: session.agentId, prompt, firstMessage, characterName: session.characterName, impression: session.impression?.id ?? null, remainingSeconds: remaining, usageSessionId: usage.sessionId });
 }

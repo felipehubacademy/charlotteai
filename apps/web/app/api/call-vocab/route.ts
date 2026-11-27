@@ -4,6 +4,7 @@
 // Significado pelo nível (conteúdo pedagógico): Novice em português com a tradução do exemplo; Inter e
 // Advanced em inglês. Não grava nada: o aluno escolhe salvar no app (source 'charlotte').
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { logOpenAIUsage } from '@/lib/openai-usage';
 
@@ -21,6 +22,9 @@ export async function POST(req: NextRequest) {
   const { data: auth } = await supabase.auth.getUser(h.slice(7));
   if (!auth?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   if (!process.env.OPENAI_API_KEY) return NextResponse.json({ items: [] });
+  // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+  const denied = await checkAiAccess(auth.user.id, 'call-vocab', req.headers.get('x-lang'));
+  if (denied) return denied;
 
   const body = await req.json().catch(() => ({}));
   const lines = (Array.isArray(body.lines) ? body.lines : []).slice(-200)

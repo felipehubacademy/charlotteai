@@ -3,6 +3,7 @@
 //   → { errorFree, corrections: [{ said, correct, tip }] } (até 3) e grava em trail_feedback.
 // A conversa em si não corrige nada (o roteiro deixa a correção para o fim).
 import { NextRequest, NextResponse } from 'next/server';
+import { checkAiAccess } from '@/lib/entitlement';
 import OpenAI from 'openai';
 import { aiFetch } from '@/lib/ai-models';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -21,6 +22,9 @@ export async function POST(req: NextRequest) {
   const { data: auth } = await supabase.auth.getUser(h.slice(7));
   const user = auth?.user;
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  // Plano e limite do aluno (lib/entitlement): sem assinatura, 402; acima do limite, 429.
+  const denied = await checkAiAccess(user.id, 'trail-feedback', req.headers.get('x-lang'));
+  if (denied) return denied;
 
   const body = await req.json().catch(() => ({}));
   const activity = body.activity === 'roleplay' ? 'roleplay' : body.activity === 'chat' ? 'chat' : null;
