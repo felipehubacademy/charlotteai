@@ -14,6 +14,7 @@ interface Agent { id: string; name: string; email: string | null; whatsapp: stri
 interface Conversation {
   id: string; channel: string; contact: string; subject: string | null; status: string;
   agentName: string | null; ticketCode: string | null; takenBy: string | null; lastMessageAt: string; last: { body: string; direction: string; intent: string | null } | null;
+  undelivered?: { status: string; error: string | null; at: string | null } | null;
 }
 
 const STATUS_BADGE: Record<string, string> = {
@@ -22,6 +23,11 @@ const STATUS_BADGE: Record<string, string> = {
 const STATUS_LABEL: Record<string, string> = {
   open: 'Aberta', escalated: 'Com atendente', auto_resolved: 'Resolvida pela IA', closed: 'Fechada',
 };
+
+// Resposta por e-mail que não chegou ao aluno (falha no envio, devolvida ou reenviando).
+const UNDELIVERED_LABEL: Record<string, string> = { failed: 'Não entregue', bounced: 'Não entregue', sending: 'Reenviando…' };
+const undeliveredTitle = (status: string, error: string | null) =>
+  status === 'sending' ? 'O reenvio está em andamento.' : `${status === 'bounced' ? 'Devolvido depois do envio' : 'Falha no envio'}: ${error ?? 'motivo não informado'}`;
 
 const fmt = (s: string | null) => s ? new Date(s).toLocaleString('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—';
 
@@ -125,7 +131,14 @@ export default function SupportAdmin() {
                       <tr key={c.id} onClick={() => setOpenConv(c.id)} style={{ cursor: 'pointer', ...(bulk.checked.has(c.id) ? { background: 'var(--s2, #F3F1EC)' } : {}) }}>
                         <td onClick={e => e.stopPropagation()}><BulkCheckbox bulk={bulk} id={c.id} label={`Selecionar ${c.contact}`} /></td>
                         <td style={{ color: 'var(--t1)', fontWeight: 500 }}>{c.contact}{c.ticketCode && c.status === 'escalated' ? <div style={{ fontSize: 11, color: 'var(--t3)', fontWeight: 400 }}>Chamado #{c.ticketCode}</div> : null}</td>
-                        <td><span className={`badge ${STATUS_BADGE[c.status] ?? 'badge-muted'}`}>{STATUS_LABEL[c.status] ?? c.status}</span></td>
+                        <td>
+                          <span className={`badge ${STATUS_BADGE[c.status] ?? 'badge-muted'}`}>{STATUS_LABEL[c.status] ?? c.status}</span>
+                          {c.undelivered && (
+                            <div style={{ marginTop: 4 }}>
+                              <span className={`badge ${c.undelivered.status === 'sending' ? 'badge-muted' : 'badge-err'}`} title={undeliveredTitle(c.undelivered.status, c.undelivered.error)}>{UNDELIVERED_LABEL[c.undelivered.status] ?? 'Não entregue'}</span>
+                            </div>
+                          )}
+                        </td>
                         <td>{CHANNEL_LABEL[c.channel] ?? c.channel}</td>
                         <td style={{ maxWidth: 340 }}>
                           <div style={{ color: 'var(--t1)' }}>{c.subject || '—'}</div>
@@ -213,7 +226,7 @@ function AgentModal({ mode, agent, onClose, onSave }: {
 
 interface Thread {
   conversation: { id: string; channel: string; contact: string; subject: string | null; status: string; agentName: string | null; createdAt: string; lastInboundAt: string | null; userVerified?: boolean; ticketCode?: string | null; takenBy?: string | null };
-  messages: { id: string; direction: string; author: string; author_name: string | null; body: string; intent: string | null; auto_sent: boolean; created_at: string }[];
+  messages: { id: string; direction: string; author: string; author_name: string | null; body: string; intent: string | null; auto_sent: boolean; created_at: string; delivery_status?: string | null; delivery_error?: string | null; delivery_failed_at?: string | null }[];
   user: { id: string; name: string | null; username: string | null; email: string; charlotte_level: string | null; subscription_status: string; subscription_product?: string | null; is_institutional: boolean } | null;
 }
 const AUTHOR: Record<string, string> = { user: 'Aluno', agent: 'Agente automático', human: 'Atendente', system: 'Aviso ao aluno' };
@@ -234,7 +247,14 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
     setBusy(true); setErr(null);
     try {
       const r = await fetch('/api/admin/support/conversations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, ...body }) });
-      if (!r.ok) { setErr((await r.json().catch(() => ({}))).error ?? 'Não foi possível salvar.'); return false; }
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        setErr(j.error ?? 'Não foi possível salvar.');
+        // E-mail que não saiu mas ficou registrado como "Não entregue": recarrega e limpa o campo,
+        // para não enviar a mesma resposta duas vezes (o reenvio é pelo botão na mensagem).
+        if (j.recorded) { await load(); onChanged(); return true; }
+        return false;
+      }
       await load(); onChanged(); return true;
     } finally { setBusy(false); }
   };
@@ -284,6 +304,24 @@ function ConversationModal({ id, onClose, onChanged }: { id: string; onClose: ()
                   }}>Aprovar troca de e-mail</button>
                 );
               })()}
+              {m.delivery_status && m.delivery_status !== 'sent' && (
+                <div style={{ marginTop: 6, display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'flex-start' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+                    <span className={`badge ${m.delivery_status === 'sending' ? 'badge-muted' : 'badge-err'}`} title={undeliveredTitle(m.delivery_status, m.delivery_error ?? null)}>{UNDELIVERED_LABEL[m.delivery_status] ?? 'Não entregue'}</span>
+                    {c?.channel === 'email' && (m.delivery_status === 'failed' || m.delivery_status === 'bounced') && (
+                      <button className="adm-btn-sm ghost" disabled={busy} onClick={() => {
+                        if (window.confirm(`Reenviar esta resposta por e-mail para ${c.contact}?`)) post({ action: 'retry_email', messageId: m.id });
+                      }}><RefreshCw size={12} /> Reenviar</button>
+                    )}
+                  </div>
+                  {m.delivery_status !== 'sending' && (
+                    <details style={{ fontSize: 11.5, color: 'var(--t2)' }}>
+                      <summary style={{ cursor: 'pointer' }}>{m.delivery_status === 'bounced' ? 'Voltou depois do envio' : 'Falha no envio'}{m.delivery_failed_at ? ` · ${fmt(m.delivery_failed_at)}` : ''}</summary>
+                      <div style={{ marginTop: 4, whiteSpace: 'pre-wrap' }}>{m.delivery_error ?? 'Motivo não informado.'}</div>
+                    </details>
+                  )}
+                </div>
+              )}
             </div>
           ))}
           {err && <div className="adm-alert crit">{err}</div>}

@@ -10,18 +10,19 @@ export const dynamic = 'force-dynamic';
  * POST { id, action: 'cancel_site' }       cancela a assinatura do site do aluno e apaga cobrança em aberto
  * POST { id, action: 'take' }              assume o atendimento (avisa o aluno com o nome do atendente)
  * POST { id, action: 'approve_email_fix', requestId }  aprova a troca de e-mail conferida pela IA (lib/email-fix)
+ * POST { id, action: 'retry_email', messageId } reenvia uma resposta por e-mail marcada como "Não entregue"
  */
 import { NextRequest, NextResponse } from 'next/server';
 import { cancelSiteSubscription } from '@/lib/site-subscription';
 import { getAdmin, can, audit } from '@/lib/admin-auth';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { sendWhatsAppText } from '@/lib/whatsapp';
 import { sendInstagramText } from '@/lib/instagram';
-import { logMessage, setConversationStatus, supportReplyHtml, ticketTakenText } from '@/lib/support-service';
+import { logMessage, setConversationStatus, ticketTakenText } from '@/lib/support-service';
 import { notifyAppReply } from '@/lib/support-app';
 import { guessLang } from '@/lib/support-agent';
 import { approveSupportEmailFix } from '@/lib/email-fix';
+import { sendSupportEmailReply, retrySupportEmail, UNDELIVERED } from '@/lib/support-delivery';
 
 // Login próprio (Bearer) com papel que acessa 'support', ou a senha mestra antiga.
 async function checkAuth(req: NextRequest) {
@@ -64,6 +65,23 @@ export async function GET(req: NextRequest) {
     }
   }
 
+  // Respostas por e-mail que não chegaram ao aluno (falha no envio ou devolvidas): selo "Não entregue" na lista.
+  const undeliveredByConv = new Map<string, { status: string; error: string | null; at: string | null }>();
+  if (ids.length) {
+    const { data: und } = await supabase
+      .from('support_messages')
+      .select('conversation_id, delivery_status, delivery_error, delivery_failed_at')
+      .in('conversation_id', ids)
+      .in('delivery_status', UNDELIVERED)
+      .order('created_at', { ascending: false })
+      .limit(200);
+    for (const m of (und ?? []) as { conversation_id: string; delivery_status: string; delivery_error: string | null; delivery_failed_at: string | null }[]) {
+      if (!undeliveredByConv.has(m.conversation_id)) {
+        undeliveredByConv.set(m.conversation_id, { status: m.delivery_status, error: m.delivery_error, at: m.delivery_failed_at });
+      }
+    }
+  }
+
   // contadores por status
   // Contados no banco (uma linha por situação), em vez de baixar todas as conversas.
   const { data: byStatus, error: stErr } = await supabase.rpc('support_status_counts');
@@ -83,6 +101,7 @@ export async function GET(req: NextRequest) {
     createdAt: c.created_at,
     lastMessageAt: c.last_message_at,
     last: lastByConv.get(c.id) ?? null,
+    undelivered: undeliveredByConv.get(c.id) ?? null,
   }));
 
   return NextResponse.json({ conversations, counts });
@@ -95,7 +114,7 @@ async function conversationDetail(id: string) {
   if (!conv) return NextResponse.json({ error: 'Conversa não encontrada' }, { status: 404 });
   const c = conv as any;
   const [{ data: msgs }, userR] = await Promise.all([
-    supabase.from('support_messages').select('id, direction, author, author_name, body, intent, auto_sent, created_at').eq('conversation_id', id).order('created_at').limit(500),
+    supabase.from('support_messages').select('id, direction, author, author_name, body, intent, auto_sent, created_at, delivery_status, delivery_error, delivery_failed_at').eq('conversation_id', id).order('created_at').limit(500),
     c.user_id
       ? supabase.from('charlotte_users').select('id, name, username, email, charlotte_level, subscription_status, subscription_product, is_institutional').eq('id', c.user_id).maybeSingle()
       : supabase.from('charlotte_users').select('id, name, username, email, charlotte_level, subscription_status, subscription_product, is_institutional').ilike('email', c.contact).maybeSingle(),
@@ -164,19 +183,34 @@ export async function POST(req: NextRequest) {
       const r = await sendInstagramText(c.external_id, text);
       if (!r.ok) return NextResponse.json({ error: `Não foi possível enviar pelo Instagram: ${r.error}` }, { status: 502 });
     } else if (c.channel === 'email') {
-      const subject = c.subject ? (/^re:/i.test(c.subject) ? c.subject : `Re: ${c.subject}`) : 'Queizy — Suporte';
-      const ok = await sendEmail({ to: c.contact, subject, html: supportReplyHtml(text), essential: true });
-      if (!ok) return NextResponse.json({ error: 'Não foi possível enviar o e-mail.' }, { status: 502 });
+      // E-mail: a resposta fica registrada com a situação da entrega. Se não saiu, fica "Não entregue"
+      // na conversa (com o motivo e o botão de reenviar) e a gestão recebe um alerta.
+      const r = await sendSupportEmailReply({ conversationId: c.id, to: c.contact, subject: c.subject, text, authorName: firstName });
+      if (!r.delivered) {
+        await audit(admin, 'support.reply_failed', 'support_conversation', c.id, { message: r.messageId, error: r.error });
+        return NextResponse.json({
+          error: `Não foi possível enviar o e-mail${r.error ? ` (${r.error})` : ''}.${r.messageId ? ' A resposta ficou na conversa como "Não entregue"; use "Reenviar" nela.' : ''}`,
+          recorded: !!r.messageId, messageId: r.messageId,
+        }, { status: 502 });
+      }
     } else if (c.channel !== 'app') {
       return NextResponse.json({ error: 'Canal sem resposta pelo /admin.' }, { status: 400 });
     }
-    await logMessage({ conversationId: c.id, direction: 'out', author: 'human', body: text, authorName: firstName });
+    if (c.channel !== 'email') await logMessage({ conversationId: c.id, direction: 'out', author: 'human', body: text, authorName: firstName });
     // Chat do app: a resposta já aparece na conversa; o push avisa o aluno.
     if (c.channel === 'app') await notifyAppReply(c.external_id, text);
     await supabase.from('support_conversations').update({ last_message_at: new Date().toISOString() } as never).eq('id', c.id);
     // Respondido pelo atendente: o ticket segue com ele (a IA não entra) até ser encerrado.
     await setConversationStatus(c.id, body.close ? 'closed' : 'escalated');
     await audit(admin, 'support.reply', 'support_conversation', c.id);
+    return NextResponse.json({ ok: true });
+  }
+
+  // Reenvia uma resposta por e-mail que não chegou ao aluno (falha no envio ou devolvida).
+  if (body.action === 'retry_email') {
+    const r = await retrySupportEmail(c.id, String(body.messageId ?? ''));
+    await audit(admin, 'support.retry_email', 'support_conversation', c.id, { message: body.messageId ?? null, ok: r.ok });
+    if (!r.ok) return NextResponse.json({ error: r.error }, { status: r.status });
     return NextResponse.json({ ok: true });
   }
 

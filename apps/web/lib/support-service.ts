@@ -219,9 +219,10 @@ export async function notifyStaleTickets(): Promise<{ notified: number }> {
   let notified = 0;
   for (const c of (data ?? []) as any[]) {
     if (c.sla_notified_at && c.sla_notified_at >= c.last_inbound_at) continue;
-    // Atendente já respondeu depois da última mensagem do aluno?
+    // Atendente já respondeu depois da última mensagem do aluno? Resposta não entregue não conta.
     const { data: human } = await supabase.from('support_messages').select('id')
-      .eq('conversation_id', c.id).eq('author', 'human').gte('created_at', c.last_inbound_at).limit(1);
+      .eq('conversation_id', c.id).eq('author', 'human').gte('created_at', c.last_inbound_at)
+      .or('delivery_status.is.null,delivery_status.eq.sent').limit(1);
     if (human?.length) continue;
     const { data: lastIn } = await supabase.from('support_messages').select('body')
       .eq('conversation_id', c.id).eq('direction', 'in').order('created_at', { ascending: false }).limit(1);
@@ -267,9 +268,12 @@ export async function closeIdleConversations(): Promise<{ closed: number }> {
   const { data: esc } = await supabase.from('support_conversations').select('id')
     .eq('status', 'escalated').lte('last_message_at', humanCutoff).limit(200);
   for (const c of (esc ?? []) as { id: string }[]) {
-    const { data: last } = await supabase.from('support_messages').select('author')
+    const { data: last } = await supabase.from('support_messages').select('author, delivery_status')
       .eq('conversation_id', c.id).order('created_at', { ascending: false }).limit(1);
-    if ((last?.[0] as { author: string } | undefined)?.author !== 'human') continue; // aluno esperando: segue na fila
+    const lastMsg = last?.[0] as { author: string; delivery_status: string | null } | undefined;
+    if (lastMsg?.author !== 'human') continue; // aluno esperando: segue na fila
+    // Resposta do atendente que não chegou ao aluno: segue na fila até alguém reenviar.
+    if (lastMsg.delivery_status && lastMsg.delivery_status !== 'sent') continue;
     await supabase.from('support_conversations').update({ status: 'closed', updated_at: now } as never).eq('id', c.id);
     closed++;
   }
