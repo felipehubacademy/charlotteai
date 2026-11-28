@@ -93,6 +93,13 @@ const CAMPAIGNS = {
     pushBody: 'Hoje é a última chance do Anual com 40% de desconto: R$ 119,99 no primeiro ano. O link está no seu e-mail.',
     template: blackFridayLastTemplate,
   },
+  // Sábado à noite, só push.
+  bf_sat_night: {
+    logType: 'bf_sat_night',
+    pushTitle: 'Amanhã é o último dia',
+    pushBody: 'A Black Friday do Queizy acaba amanhã, domingo. Anual com 40% de desconto: o link está no seu e-mail.',
+    template: blackFridaySatTemplate,
+  },
   // Domingo à noite, só push.
   bf_hours: {
     logType: 'bf_hours',
@@ -101,7 +108,7 @@ const CAMPAIGNS = {
     template: blackFridayLastTemplate,
   },
 } as const;
-const BLACK_FRIDAY_CAMPAIGNS = ['bf_teaser', 'bf_offer', 'bf_sat', 'bf_last', 'bf_hours'];
+const BLACK_FRIDAY_CAMPAIGNS = ['bf_teaser', 'bf_offer', 'bf_sat', 'bf_sat_night', 'bf_last', 'bf_hours'];
 // Janela da campanha de volta (dias do calendário de Brasília: 20/10 a 27/10).
 const WINBACK_FROM = '2026-10-20T03:00:00Z';
 const WINBACK_TO   = '2026-10-28T03:00:00Z';
@@ -149,7 +156,7 @@ export async function POST(req: NextRequest) {
     : ['push', 'email'];
   const campaignId: CampaignId = ['family', 'update', 'winback', ...BLACK_FRIDAY_CAMPAIGNS].includes(body?.campaign) ? body.campaign : 'release';
   const isBlackFriday = BLACK_FRIDAY_CAMPAIGNS.includes(campaignId);
-  if (campaignId === 'bf_hours') channels.splice(0, channels.length, 'push'); // lembrete da noite: só push
+  if (campaignId === 'bf_hours' || campaignId === 'bf_sat_night') channels.splice(0, channels.length, 'push'); // lembretes da noite: só push
   const campaign = CAMPAIGNS[campaignId];
   const platform: Platform | null = body?.platform === 'ios' || body?.platform === 'android' ? body.platform : null;
   if (campaignId === 'update' && !platform) {
