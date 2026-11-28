@@ -5,6 +5,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { stuckReport } from '@/lib/learn-stuck';
+import { retryStopsText } from '@/lib/learn-stuck-text';
 import { listReports, REASON_PT, SCREEN_PT, exerciseText } from '@/lib/exercise-reports';
 import { sendEmail } from '@/lib/microsoft-graph-email-service';
 import { base, h1, p, btn } from '@/lib/email-brand';
@@ -37,8 +38,8 @@ export async function POST(req: NextRequest) {
     h1('Onde os alunos travaram'),
     p(`Últimas ${days === 1 ? '24 horas' : `${days} dias`}: ${t.attempts} tentativas de ${t.students} aluno(s), ${t.fails} reprovações, ${t.skips} pulos e ${t.exits} saídas no meio.`),
     // Corretor novo da fala: o que ele salvou (aprovou e o antigo reprovaria) e os pedidos de "fale de novo".
-    t.graded || t.retries
-      ? p(`<strong>Corretor da fala</strong><br>${t.graderSaved} tentativa(s) aprovada(s) que o corretor antigo reprovaria, ${t.graderLost} reprovada(s) que ele aprovaria e ${t.retries} pedido(s) de "fale de novo" (fala vazia ou cortada, sem contar como erro).`) +
+    t.graded || t.retries || t.micTaps
+      ? p(`<strong>Corretor da fala</strong><br>${t.graderSaved} tentativa(s) aprovada(s) que o corretor antigo reprovaria, ${t.graderLost} reprovada(s) que ele aprovaria e ${t.retries} pedido(s) de "fale de novo" (fala vazia ou cortada, sem contar como erro).${retryStopsText(t) ? ` ${esc(retryStopsText(t))}` : ''}`) +
         (report.graderSaved.length
           ? `<ul style="margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.6;color:#16131F;">${report.graderSaved.slice(0, 6).map(g => `<li style="margin-bottom:8px;">${esc(`"${g.expected}" — o app entendeu "${g.answer || '—'}"${g.count > 1 ? ` (${g.count} vezes)` : ''}`)}</li>`).join('')}</ul>`
           : '')
