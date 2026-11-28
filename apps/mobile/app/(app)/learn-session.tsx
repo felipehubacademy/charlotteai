@@ -467,6 +467,17 @@ export default function LearnSessionScreen() {
   const stopOnReleaseRef = useRef(false);
   // Vigia do silêncio: para a gravação ~1,2 s depois que o aluno termina de falar.
   const vadTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Gravação atual: aberta sozinha (sem toque)? Já ouviu fala? O aparelho informa o nível do som?
+  // Com o microfone aberto sozinho e sem fala ouvida, o 1º toque não para (o aluno achou que precisava
+  // tocar para começar); só reinicia o prazo de "sem fala".
+  const autoOpenedRef = useRef(false);
+  const heardRef = useRef(false);
+  const meterOkRef = useRef(false);
+  const tapIgnoredRef = useRef(false);
+  const noSpeechFromRef = useRef(0);
+  // Por que a gravação parou (vai para learn_attempts.stop_reason; o relatório separa os "fale de novo").
+  type StopReason = 'silence' | 'no_speech' | 'max' | 'tap' | 'release' | 'tap_before_speech';
+  const stopReasonRef = useRef<StopReason | null>(null);
   const [micReady, setMicReady] = useState(false);
   // Microfone negado: mostra aviso com atalho para os Ajustes, em vez de o botão não fazer nada.
   const [micBlocked, setMicBlocked] = useState(false);
@@ -1011,7 +1022,7 @@ export default function LearnSessionScreen() {
     if (preNovicePass && !g.negationMismatch) outcome = 'pass';
 
     const logBase = { ...pronLogBase(), answer: transcript, alternatives: alts, score: pct, source,
-      errorCode: asrErrorRef.current, legacyScore: legacy, legacyPassed };
+      errorCode: asrErrorRef.current, legacyScore: legacy, legacyPassed, stopReason: stopReasonRef.current };
 
     if (outcome === 'retry') {
       stepRetriesRef.current += 1;
@@ -1266,29 +1277,35 @@ export default function LearnSessionScreen() {
 
   // ── Vigia do silêncio ──
   // Lê o nível do som a cada 100 ms. Depois que o aluno falou, ~1,2 s de silêncio para a gravação; sem fala
-  // nenhuma em 7 s, para também (vira "não ouvimos, fale de novo"); no máximo 15 s. O ruído de fundo de cada
+  // nenhuma em 7 s (10 s no Novice M01), para também (vira "não ouvimos, fale de novo"); no máximo 15 s. O ruído de fundo de cada
   // lugar é aprendido na hora (o menor nível ouvido), e "fala" é ficar bem acima dele.
   const VAD = { tickMs: 100, silenceMs: 1200, noSpeechMs: 7000, maxMs: 15000, minSpeechMs: 250 };
+  // Primeiras frases do curso (Novice M01): o aluno ainda está entendendo o microfone; 10 s antes do "sem fala".
+  const noSpeechMs = () => (level === 'Novice' && params.moduleId === 'M01' ? 10000 : VAD.noSpeechMs);
   const stopVad = () => {
     if (vadTimerRef.current) { clearInterval(vadTimerRef.current); vadTimerRef.current = null; }
   };
   const startVad = (attempt: number) => {
     stopVad();
     const t0 = Date.now();
+    noSpeechFromRef.current = t0;
+    heardRef.current = false;
+    meterOkRef.current = false;
     let floor = Infinity;
     let speechMs = 0;
-    let heard = false;
     let quietSince = 0;
     vadTimerRef.current = setInterval(() => {
       if (!recordingRef.current || pronAttemptRef.current !== attempt) { stopVad(); return; }
-      if (holdingRef.current) return; // segurando o botão: quem para é o soltar
       const now = Date.now();
       const elapsed = now - t0;
-      if (elapsed >= VAD.maxMs) { stopVad(); stopRecording(); return; }
+      // Segurando o botão: quem para é o soltar (mas a fala continua sendo medida).
+      const holding = holdingRef.current;
+      if (elapsed >= VAD.maxMs && !holding) { stopVad(); stopRecording('max'); return; }
       let level: number | undefined;
       try { level = recorder.getStatus().metering; } catch { /* sem nível */ }
       // Sem leitura de nível (aparelho que não informa): para só pelo tempo máximo ou pelo toque.
       if (typeof level !== 'number' || Number.isNaN(level)) return;
+      meterOkRef.current = true;
       // Silêncio total (o Android informa -160 quando a amplitude é zero): conta como silêncio, mas não
       // entra no ruído de fundo (senão qualquer som baixo passaria a valer como fala).
       if (!isFinite(level) || level <= -100) level = -100;
@@ -1297,12 +1314,13 @@ export default function LearnSessionScreen() {
       if (level > Math.max(f + 12, -50)) {
         speechMs += VAD.tickMs;
         quietSince = 0;
-        if (speechMs >= VAD.minSpeechMs) heard = true;
+        if (speechMs >= VAD.minSpeechMs) heardRef.current = true;
       } else if (level < f + 6) {
-        if (heard) {
+        if (holding) return;
+        if (heardRef.current) {
           if (!quietSince) quietSince = now;
-          if (now - quietSince >= VAD.silenceMs) { stopVad(); stopRecording(); }
-        } else if (elapsed >= VAD.noSpeechMs) { stopVad(); stopRecording(); }
+          if (now - quietSince >= VAD.silenceMs) { stopVad(); stopRecording('silence'); }
+        } else if (now - noSpeechFromRef.current >= noSpeechMs()) { stopVad(); stopRecording('no_speech'); }
       } else {
         quietSince = 0; // entre o ruído e a fala: ainda não é silêncio
       }
@@ -1324,7 +1342,7 @@ export default function LearnSessionScreen() {
     setPronStatus('listening');
   };
 
-  const startRecording = () => {
+  const startRecording = (auto = false) => {
     if (recordingRef.current || stoppingRef.current) return;
     if (!currentStep || currentStep.kind !== 'pronunciation') return;
     // Sem permissão o botão está em "toque para liberar" (requestMic); aqui nunca abre o pedido do sistema.
@@ -1337,6 +1355,11 @@ export default function LearnSessionScreen() {
 
     pronAttemptRef.current += 1;
     recordingRef.current = true;
+    autoOpenedRef.current = auto;
+    tapIgnoredRef.current = false;
+    heardRef.current = false;
+    meterOkRef.current = false;
+    stopReasonRef.current = null;
     recordingStartRef.current = Date.now();
     recordStartedAtRef.current = 0;
     speechTranscriptRef.current = '';
@@ -1386,8 +1409,11 @@ export default function LearnSessionScreen() {
     p.finally(() => { if (startPromiseRef.current === p) startPromiseRef.current = null; });
   };
 
-  const stopRecording = async () => {
+  const stopRecording = async (reason: StopReason = 'tap') => {
     if (!recordingRef.current || stoppingRef.current || !currentStep || currentStep.kind !== 'pronunciation') return;
+    // Toque (ou soltar) antes de qualquer fala ouvida: se vier vazia, não é "fale de novo" nem erro.
+    const tapBeforeSpeech = (reason === 'tap' || reason === 'release') && meterOkRef.current && !heardRef.current;
+    stopReasonRef.current = tapBeforeSpeech ? 'tap_before_speech' : reason;
 
     stopVad();
     holdingRef.current = false;
@@ -1475,6 +1501,15 @@ export default function LearnSessionScreen() {
       // Nada ouvido e microfone negado: mostra o caminho para liberar em vez de "não ouvimos" de novo.
       if (!transcript && await micDenied()) { if (!stale()) blockMic(); return; }
       if (stale()) return;
+      if (!transcript && tapBeforeSpeech) {
+        // Parou no toque antes de falar e nada foi dito: só orienta e reabre o microfone.
+        logAttempt(userId, { ...pronLogBase(), event: 'mic_tap', source: 'server', stopReason: 'tap_before_speech' });
+        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
+        showPronHint(isPortuguese ? 'Pode falar a frase: o microfone abre de novo e para sozinho quando você terminar.' : 'Go ahead and say the phrase: the mic opens again and stops by itself when you finish.');
+        autoArmRef.current = true;
+        setPronStatus('listening');
+        return;
+      }
       finishPronAttempt(transcript ? [transcript] : [], 'server');
     } catch (e) {
       if (stale()) return;
@@ -1497,7 +1532,7 @@ export default function LearnSessionScreen() {
     const t = setTimeout(() => {
       if (!autoArmRef.current || recordingRef.current || stoppingRef.current || isPlayingRef.current) return;
       autoArmRef.current = false;
-      startRecording();
+      startRecording(true);
     }, 450);
     return () => clearTimeout(t);
   }, [pronStatus, micLocked, isPlaying, micReady, micAsk, micBlocked, lsIntroState, stepIdx, charlotteAudioUri]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -1506,7 +1541,22 @@ export default function LearnSessionScreen() {
   // soltar também funciona (quem já se acostumou a segurar não perde a fala).
   const onMicPressIn = () => {
     pressInAtRef.current = Date.now();
-    if (recordingRef.current) { stopOnReleaseRef.current = true; return; }
+    if (recordingRef.current) {
+      // Microfone aberto sozinho e nada ouvido ainda: o aluno tocou para começar. Não para; segue gravando,
+      // reinicia o prazo de "sem fala" e avisa. Só o 1º toque (o 2º para, para ninguém ficar preso) e só
+      // em aparelho que informa o nível do som (sem ele não dá para saber se já houve fala).
+      if (autoOpenedRef.current && meterOkRef.current && !heardRef.current && !tapIgnoredRef.current) {
+        tapIgnoredRef.current = true;
+        noSpeechFromRef.current = Date.now();
+        stopOnReleaseRef.current = false;
+        holdingRef.current = true; // se segurar e falar, o soltar para (como no "segurar para falar")
+        logAttempt(userId, { ...pronLogBase(), event: 'mic_tap', stopReason: 'tap_before_speech' });
+        showPronHint(isPortuguese ? 'Pode falar, o microfone já está aberto.' : 'Go ahead, the mic is already open.');
+        return;
+      }
+      stopOnReleaseRef.current = true;
+      return;
+    }
     stopOnReleaseRef.current = false;
     holdingRef.current = true;
     autoArmRef.current = false;
@@ -1516,8 +1566,8 @@ export default function LearnSessionScreen() {
     const held = Date.now() - pressInAtRef.current;
     const wasHolding = holdingRef.current;
     holdingRef.current = false;
-    if (stopOnReleaseRef.current) { stopOnReleaseRef.current = false; stopRecording(); return; }
-    if (wasHolding && held >= 600 && recordingRef.current) stopRecording();
+    if (stopOnReleaseRef.current) { stopOnReleaseRef.current = false; stopRecording('tap'); return; }
+    if (wasHolding && held >= 600 && recordingRef.current) stopRecording('release');
   };
 
   // ── Pronunciation: listen_write check ─────────────────────

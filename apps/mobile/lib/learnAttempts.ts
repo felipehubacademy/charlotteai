@@ -8,7 +8,9 @@ import { supabase } from './supabase';
 import { getAppVersionFields } from './appVersion';
 
 // 'retry' = fala vazia ou cortada: o app pediu para falar de novo, sem reprovar (lib/speechGrade).
-export type AttemptEvent = 'attempt' | 'skip' | 'exit' | 'asr_error' | 'mic_blocked' | 'retry';
+// 'mic_tap' = toque no microfone antes de qualquer fala (aberto sozinho: não parou; aberto no toque: parou
+// vazio). Não conta como "fale de novo" nem como erro.
+export type AttemptEvent = 'attempt' | 'skip' | 'exit' | 'asr_error' | 'mic_blocked' | 'retry' | 'mic_tap';
 
 export interface AttemptLog {
   level: string;
@@ -30,6 +32,9 @@ export interface AttemptLog {
   /** Nota e resultado que o corretor antigo daria (para medir o que o novo salva). */
   legacyScore?: number | null;
   legacyPassed?: boolean | null;
+  /** Por que a gravação parou: silence (silêncio depois da fala), no_speech (prazo sem fala), max (15 s),
+   *  tap / release (toque ou soltar depois da fala), tap_before_speech (toque antes de qualquer fala). */
+  stopReason?: 'silence' | 'no_speech' | 'max' | 'tap' | 'release' | 'tap_before_speech' | null;
 }
 
 let version: string | null | undefined;
@@ -55,6 +60,7 @@ export function logAttempt(userId: string | undefined | null, a: AttemptLog): vo
     ...(a.outcome ? { outcome: a.outcome } : {}),
     ...(typeof a.legacyScore === 'number' ? { legacy_score: Math.round(a.legacyScore) } : {}),
     ...(typeof a.legacyPassed === 'boolean' ? { legacy_passed: a.legacyPassed } : {}),
+    ...(a.stopReason ? { stop_reason: a.stopReason } : {}),
     platform: Platform.OS,
     app_version: version,
   };

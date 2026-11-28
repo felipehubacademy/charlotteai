@@ -14,6 +14,9 @@ export interface StuckItem {
   failRate: number; avgScore: number | null; samples: string[];
 }
 
+export type { RetryStops } from './learn-stuck-text';
+import type { RetryStops } from './learn-stuck-text';
+
 export interface StuckReport {
   since: string;
   totals: {
@@ -21,6 +24,8 @@ export interface StuckReport {
     /** Corretor novo da fala: pedidos de "fale de novo" (vazio/cortado), tentativas comparadas com o antigo,
      *  aprovadas que o antigo reprovaria e reprovadas que o antigo aprovaria. */
     retries: number; graded: number; graderSaved: number; graderLost: number;
+    /** "Fale de novo" por motivo da parada do microfone (sem motivo = app sem o registro) e toques antes da fala. */
+    retryStops: RetryStops; micTaps: number;
   };
   /** Exemplos do que o corretor novo aprovou e o antigo reprovaria (frase, o que o app entendeu, vezes). */
   graderSaved: { expected: string; answer: string; count: number }[];
@@ -149,6 +154,8 @@ export async function stuckReport(days: number): Promise<StuckReport> {
       exits: agg.totals.exits, asrErrors: agg.totals.asrErrors, micBlocked: agg.totals.micBlocked,
       retries: agg.totals.retries ?? 0, graded: agg.totals.graded ?? 0,
       graderSaved: agg.totals.graderSaved ?? 0, graderLost: agg.totals.graderLost ?? 0,
+      retryStops: agg.totals.retryStops ?? { noSpeech: 0, silence: 0, max: 0, tap: 0, unknown: agg.totals.retries ?? 0 },
+      micTaps: agg.totals.micTaps ?? 0,
     },
     graderSaved: (agg.graderSaved ?? []).map(g => ({ expected: g.expected, answer: g.answer, count: g.count })),
     speaking, grammar, exits, failures, alerts, alertGroups: groups,
