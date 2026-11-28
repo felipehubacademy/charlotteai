@@ -86,7 +86,7 @@ language sql stable security definer set search_path = public, pg_temp set extra
       count(*) filter (where event = 'retry' and stop_reason = 'no_speech')::int as retry_no_speech,
       count(*) filter (where event = 'retry' and stop_reason = 'silence')::int as retry_silence,
       count(*) filter (where event = 'retry' and stop_reason = 'max')::int as retry_max,
-      count(*) filter (where event = 'retry' and stop_reason in ('tap', 'release'))::int as retry_tap,
+      count(*) filter (where event = 'retry' and stop_reason in ('tap', 'release', 'tap_before_speech'))::int as retry_tap,
       count(*) filter (where event = 'retry' and stop_reason is null)::int as retry_unknown,
       count(*) filter (where event = 'mic_tap')::int as mic_taps,
       count(*) filter (where event = 'attempt' and legacy_passed is not null)::int as graded,

@@ -8,7 +8,7 @@ export function retryStopsText(t: { retries: number; retryStops: RetryStops; mic
   const parts: string[] = [];
   if (s.noSpeech) parts.push(`${s.noSpeech} sem fala no prazo`);
   if (s.silence) parts.push(`${s.silence} parada(s) no silêncio depois da fala`);
-  if (s.tap) parts.push(`${s.tap} parada(s) no toque depois da fala`);
+  if (s.tap) parts.push(`${s.tap} parada(s) no toque`);
   if (s.max) parts.push(`${s.max} no tempo máximo`);
   if (s.unknown && parts.length) parts.push(`${s.unknown} de app sem o registro do motivo`);
   const why = parts.length ? `Motivo dos "fale de novo": ${parts.join(', ')}.` : '';
